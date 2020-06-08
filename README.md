@@ -12,7 +12,7 @@
 
 ## Install
 ```shell
-$ git clone git@github.com:stu01509/TaiwanLotteryCrawler.git
+$ git clone https://github.com/stu01509/TaiwanLotteryCrawler.git
 $ cd TaiwanLotteryCrawler
 $ pip install -r requirements.txt
 ```
@@ -63,6 +63,10 @@ $ python crawl.py 今彩539 5 -o
 
 ```shell
 $ python crawl.py 雙贏彩 5 -o
+```
+### 指令說明
+```shell
+$ python crawl.py -h
 ```
 
 ## Data Source

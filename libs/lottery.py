@@ -252,21 +252,25 @@ class Lottery():
             utils.outputToJson(title, datas)
         return datas
 
+    # 威力彩歷史查詢
     def superLottoBack(self, isPrintData=True, isOutput=True, backMonth='0'):
         for i in range(backMonth, -1, -1):
             self.superLotto(isPrintData, isOutput, utils.monthDiff(i))
             logging.debug(str(utils.monthDiff(i)[0]) + '_' +  str(utils.monthDiff(i)[1]))      
 
+    # 大樂透歷史查詢
     def lotto649Back(self, isPrintData=True, isOutput=True, backMonth='0'):
         for i in range(backMonth, -1, -1):
             self.lotto649(isPrintData, isOutput, utils.monthDiff(i))
             logging.debug(str(utils.monthDiff(i)[0]) + '_' +  str(utils.monthDiff(i)[1]))      
 
+    # 今彩539歷史查詢
     def dailyCashBack(self, isPrintData=True, isOutput=True, backMonth='0'):
         for i in range(backMonth, -1, -1):
             self.dailyCash(isPrintData, isOutput, utils.monthDiff(i))
             logging.debug(str(utils.monthDiff(i)[0]) + '_' +  str(utils.monthDiff(i)[1]))      
-
+    
+    # 雙贏彩歷史查詢
     def lotto1224Back(self, isPrintData=True, isOutput=True, backMonth='0'):
         for i in range(backMonth, -1, -1):
             self.lotto1224(isPrintData, isOutput, utils.monthDiff(i))
