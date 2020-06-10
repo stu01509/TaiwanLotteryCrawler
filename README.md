@@ -24,7 +24,7 @@ $ pip install -r requirements.txt
 $ python crawl.py
 ```
 
-### 爬取當月份的開獎紀錄並輸出
+### 爬取當月份的開獎紀錄並輸出 JSON
 ```shell
 $ python crawl.py -o
 ```
@@ -47,7 +47,7 @@ $ python crawl.py 今彩539 5
 $ python crawl.py 雙贏彩 5
 ```
 
-### 往回爬取指定彩券的幾個月前的開獎紀錄並輸出
+### 往回爬取指定彩券的幾個月前的開獎紀錄並輸出 JSON
 爬取 5 個月前的開獎資料
 ```shell
 $ python crawl.py 威力彩 5 -o
