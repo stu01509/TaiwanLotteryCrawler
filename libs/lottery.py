@@ -4,7 +4,6 @@ from bs4 import BeautifulSoup
 import logging
 from libs import utils
 
-
 class Lottery():
     def __init__(self):        
         pass
@@ -54,7 +53,7 @@ class Lottery():
 
             data = {
                 "期別": stage[0].text,
-                "日期": date[0].text,
+                "開獎日期": date[0].text,
                 "第一區": tempSecondNums,
                 "第二區": secondNums[i * 2].text.strip()
             }
@@ -65,8 +64,7 @@ class Lottery():
             return
 
         if isPrintData:
-            print('\n' + title)
-            print(datas)
+            utils.printToTable(title, datas)
         if isOutput:
             utils.outputToJson(title, datas)
         return datas
@@ -117,9 +115,9 @@ class Lottery():
 
             data = {
                 "期別": stage[0].text,
-                "日期": date[0].text,
-                "第一區": tempSecondNums,
-                "第二區": secondNums[i * 2].text.strip()
+                "開獎日期": date[0].text,
+                "獎號": tempSecondNums,
+                "特別號": secondNums[i * 2].text.strip()
             }
             datas.append(data)
 
@@ -128,8 +126,7 @@ class Lottery():
             return
         
         if isPrintData:
-            print('\n' + title)
-            print(datas)
+            utils.printToTable(title, datas)
         if isOutput:
             utils.outputToJson(title, datas)
         return datas
@@ -178,7 +175,7 @@ class Lottery():
 
             data = {
                 "期別": stage[0].text,
-                "日期": date[0].text,
+                "開獎日期": date[0].text,
                 "獎號": tempSecondNums,
             }
             datas.append(data)
@@ -187,8 +184,7 @@ class Lottery():
             logging.warning('查無資料 ' + title)
             return
         if isPrintData:
-            print('\n' + title)
-            print(datas)
+            utils.printToTable(title, datas)            
         if isOutput:
             utils.outputToJson(title, datas)
         return datas
@@ -237,7 +233,7 @@ class Lottery():
 
             data = {
                 "期別": stage[0].text,
-                "日期": date[0].text,
+                "開獎日期": date[0].text,
                 "獎號": tempSecondNums,
             }
             datas.append(data)
@@ -246,8 +242,7 @@ class Lottery():
             logging.warning('查無資料 ' + title)
             return
         if isPrintData:
-            print('\n' + title)
-            print(datas)
+            utils.printToTable(title, datas)
         if isOutput:
             utils.outputToJson(title, datas)
         return datas
