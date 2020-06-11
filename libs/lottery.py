@@ -2,7 +2,9 @@
 import requests
 from bs4 import BeautifulSoup
 import logging
+import time
 from libs import utils
+import random
 
 class Lottery():
     def __init__(self):        
@@ -249,25 +251,29 @@ class Lottery():
 
     # 威力彩歷史查詢
     def superLottoBack(self, isPrintData=True, isOutput=True, backMonth='0'):
-        for i in range(backMonth, -1, -1):
+        for i in range(int(backMonth), -1, -1):
+            time.sleep(random.random())
             self.superLotto(isPrintData, isOutput, utils.monthDiff(i))
             logging.debug(str(utils.monthDiff(i)[0]) + '_' +  str(utils.monthDiff(i)[1]))      
 
     # 大樂透歷史查詢
     def lotto649Back(self, isPrintData=True, isOutput=True, backMonth='0'):
-        for i in range(backMonth, -1, -1):
+        for i in range(int(backMonth), -1, -1):
+            time.sleep(random.random())
             self.lotto649(isPrintData, isOutput, utils.monthDiff(i))
             logging.debug(str(utils.monthDiff(i)[0]) + '_' +  str(utils.monthDiff(i)[1]))      
 
     # 今彩539歷史查詢
     def dailyCashBack(self, isPrintData=True, isOutput=True, backMonth='0'):
-        for i in range(backMonth, -1, -1):
+        for i in range(int(backMonth), -1, -1):
+            time.sleep(random.random())
             self.dailyCash(isPrintData, isOutput, utils.monthDiff(i))
             logging.debug(str(utils.monthDiff(i)[0]) + '_' +  str(utils.monthDiff(i)[1]))      
     
     # 雙贏彩歷史查詢
     def lotto1224Back(self, isPrintData=True, isOutput=True, backMonth='0'):
-        for i in range(backMonth, -1, -1):
+        for i in range(int(backMonth), -1, -1):
+            time.sleep(random.random())            
             self.lotto1224(isPrintData, isOutput, utils.monthDiff(i))
             logging.debug(str(utils.monthDiff(i)[0]) + '_' +  str(utils.monthDiff(i)[1]))      
 
