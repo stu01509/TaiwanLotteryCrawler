@@ -16,6 +16,11 @@ def getCurrentRepublicEra():
     currentTime = datetime.datetime.now()
     return currentTime.year - 1911
 
+# 西元年月份轉民國年月份
+def convertToRepublicEraMonth(time):
+    if ('-' in time):
+        return [int(time.split('-')[0]) - 1911, int(time.split('-')[1])]
+
 # 計算月數差
 def monthDiff(backMonth):
     currentRepublicEra = datetime.datetime.now().year - 1911
@@ -41,6 +46,7 @@ def outputToJson(filename, data):
     except Exception as e:
         logging.error(filename + "存取發生未知的錯誤")
 
+# 使用 Table 樣式顯示
 def printToTable(title, datas):
     tableDatas = []
     if ('第一區' in datas[0] and '第二區' in datas[0]):
