@@ -20,7 +20,6 @@ class Lottery():
 
         datas = []
         payload = {
-            'SuperLotto638Control_history1$DropDownList1': '1',
             'SuperLotto638Control_history1$chk': 'radYM',
             'SuperLotto638Control_history1$dropYear': backTime[0],
             'SuperLotto638Control_history1$dropMonth': backTime[1],
@@ -82,7 +81,6 @@ class Lottery():
 
         datas = []
         payload = {
-            'Lotto649Control_history$DropDownList1': '2',
             'Lotto649Control_history$chk': 'radYM',
             'Lotto649Control_history$dropYear': backTime[0],
             'Lotto649Control_history$dropMonth': backTime[1],
@@ -143,7 +141,6 @@ class Lottery():
         datas = []
 
         payload = {
-            'D539Control_history1$DropDownList1': '5',
             'D539Control_history1$chk': 'radYM',
             'D539Control_history1$dropYear': backTime[0],
             'D539Control_history1$dropMonth': backTime[1],
@@ -201,7 +198,6 @@ class Lottery():
         datas = []
 
         payload = {
-            'Lotto1224Control_history$DropDownList1': '12',
             'Lotto1224Control_history$chk': 'radYM',
             'Lotto1224Control_history$dropYear': backTime[0],
             'Lotto1224Control_history$dropMonth': backTime[1],
