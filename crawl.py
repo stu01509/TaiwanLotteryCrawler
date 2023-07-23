@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import argparse
 import logging
-from libs.lottery import Lottery
-from libs import utils
+from src.lottery import Lottery
+from src import utils
 
 logging.basicConfig(level=logging.INFO)
 
