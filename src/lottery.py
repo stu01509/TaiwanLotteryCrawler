@@ -3,12 +3,10 @@ import requests
 from bs4 import BeautifulSoup
 import logging
 import time
-from libs import utils
+from src import utils
 import random
 
 class Lottery():
-    def __init__(self):        
-        pass
         
     # 威力彩
     def superLotto(self, isPrintData=True, isOutput=False, backTime=[utils.getCurrentRepublicEra(), utils.getCurrentMonth()]):
