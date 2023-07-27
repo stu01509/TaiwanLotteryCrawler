@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from src import utils
 
+
 def test_convert_to_republic_era_month():
     # Given user wants to convert 2023-06
     # When user get the 2023-06 convert result
