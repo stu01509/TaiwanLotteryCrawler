@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ['3.10', '3.11']
+        python-version: ['3.11']
 
     steps:
       - uses: actions/checkout@v3
@@ -19,5 +19,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-      - name: Test
+      - name: Pytest Unit Test
         run: pytest
+      - name: Flake8 Lint Check
+        run: flake8
