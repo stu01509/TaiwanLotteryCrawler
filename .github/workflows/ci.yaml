@@ -4,7 +4,7 @@ on:
   - pull_request
 
 jobs:
-  test:
+  ci:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -19,5 +19,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-      - name: Test
+      - name: Pytest Unit Test
         run: pytest
+      - name: Flake8 Lint Check
+        run: flake8
