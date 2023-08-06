@@ -7,7 +7,7 @@ from src import utils
 import random
 
 
-class Lottery():
+class TaiwanLotteryCrawler():
 
     # 威力彩
     def superLotto(self, isPrintData=True, isOutput=False, backTime=[utils.getCurrentRepublicEra(), utils.getCurrentMonth()]):

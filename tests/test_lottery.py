@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-from src.lottery import Lottery
+from src.lottery import TaiwanLotteryCrawler
 
 
 def test_super_lotto():
     # Given user wants to get 威力彩 2023-06 result
-    lottery = Lottery()
+    lottery = TaiwanLotteryCrawler()
 
     # When user get the 威力彩 2023-06 result without print and output to json
     super_lotto_result = lottery.superLotto(False, False, [112, 6])
@@ -25,7 +25,7 @@ def test_super_lotto():
 
 def test_lotto649():
     # Given user wants to get 大樂透 2023-06 result
-    lottery = Lottery()
+    lottery = TaiwanLotteryCrawler()
 
     # When user get the 大樂透 2023-06 result without print and output to json
     lotto649_result = lottery.lotto649(False, False, [112, 6])
@@ -46,7 +46,7 @@ def test_lotto649():
 
 def test_daily_cash():
     # Given user wants to get 今彩539 2023-06 result
-    lottery = Lottery()
+    lottery = TaiwanLotteryCrawler()
 
     # When user get the 今彩539 2023-06 result without print and output to json
     daily_cash_result = lottery.dailyCash(False, False, [112, 6])
@@ -84,7 +84,7 @@ def test_daily_cash():
 
 def test_lotto1224():
     # Given user wants to get 雙贏彩 2023-06 result
-    lottery = Lottery()
+    lottery = TaiwanLotteryCrawler()
 
     # When user get the 雙贏彩 2023-06 result without print and output to json
     lotto1224_result = lottery.lotto1224(False, False, [112, 6])

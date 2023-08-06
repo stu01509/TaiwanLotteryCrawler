@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import argparse
 import logging
-from src.lottery import Lottery
+from src.lottery import TaiwanLotteryCrawler
 from src import utils
 
 logging.basicConfig(level=logging.INFO)
@@ -24,7 +24,7 @@ def main():
     args = parser.parse_args()
     logging.debug(args)
 
-    lottery = Lottery()
+    lottery = TaiwanLotteryCrawler()
 
     if (args.output is False and args.game == '' and args.back == 0 and args.time == 0):
         lottery.superLotto()
