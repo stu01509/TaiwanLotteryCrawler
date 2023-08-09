@@ -10,9 +10,9 @@ import random
 class Lottery():
 
     # 威力彩
-    def superLotto(self, isPrintData=True, isOutput=False, backTime=[utils.getCurrentRepublicEra(), utils.getCurrentMonth()]):
+    def super_lotto(self, is_print_data=True, is_output=False, back_time=[utils.get_current_republic_era(), utils.get_current_month()]):
         URL = 'https://www.taiwanlottery.com.tw/Lotto/SuperLotto638/history.aspx'
-        title = '威力彩_' + str(backTime[0]) + '_' + str(backTime[1])
+        title = '威力彩_' + str(back_time[0]) + '_' + str(back_time[1])
 
         res = requests.get(URL)
         soup = BeautifulSoup(res.text, 'html.parser')
@@ -20,8 +20,8 @@ class Lottery():
         datas = []
         payload = {
             'SuperLotto638Control_history1$chk': 'radYM',
-            'SuperLotto638Control_history1$dropYear': backTime[0],
-            'SuperLotto638Control_history1$dropMonth': backTime[1],
+            'SuperLotto638Control_history1$dropYear': back_time[0],
+            'SuperLotto638Control_history1$dropMonth': back_time[1],
             'SuperLotto638Control_history1$btnSubmit': '查詢'
         }
         payload["__VIEWSTATE"] = soup.select_one("#__VIEWSTATE")["value"]
@@ -37,25 +37,25 @@ class Lottery():
             logging.warning('查無資料 ' + title)
             return
 
-        firstNums = soup.select(".td_w.font_black14b_center")
-        secondNums = soup.select(".td_w.font_red14b_center")
-        dataCount = len(secondNums) / 2
+        first_nums = soup.select(".td_w.font_black14b_center")
+        second_nums = soup.select(".td_w.font_red14b_center")
+        data_count = len(second_nums) / 2
 
-        for i in range(0, int(dataCount)):
-            tempSecondNums = []
+        for i in range(0, int(data_count)):
+            temp_second_nums = []
             stage = soup.select(
                 '#SuperLotto638Control_history1_dlQuery_DrawTerm_' + str(i))
             date = soup.select(
                 '#SuperLotto638Control_history1_dlQuery_Date_' + str(i))
 
             for j in range(6):
-                tempSecondNums.append(firstNums[((i * 2) * 6) + j].text.strip())
+                temp_second_nums.append(first_nums[((i * 2) * 6) + j].text.strip())
 
             data = {
                 "期別": stage[0].text,
                 "開獎日期": date[0].text,
-                "第一區": tempSecondNums,
-                "第二區": secondNums[i * 2].text.strip()
+                "第一區": temp_second_nums,
+                "第二區": second_nums[i * 2].text.strip()
             }
             datas.append(data)
 
@@ -63,16 +63,16 @@ class Lottery():
             logging.warning('查無資料 ' + title)
             return
 
-        if isPrintData:
-            utils.printToTable(title, datas)
-        if isOutput:
-            utils.outputToJson(title, datas)
+        if is_print_data:
+            utils.print_to_table(title, datas)
+        if is_output:
+            utils.output_to_json(title, datas)
         return datas
 
     # 大樂透
-    def lotto649(self, isPrintData=True, isOutput=False, backTime=[utils.getCurrentRepublicEra(), utils.getCurrentMonth()]):
+    def lotto649(self, is_print_data=True, is_output=False, back_time=[utils.get_current_republic_era(), utils.get_current_month()]):
         URL = 'https://www.taiwanlottery.com.tw/Lotto/Lotto649/history.aspx'
-        title = '大樂透_' + str(backTime[0]) + '_' + str(backTime[1])
+        title = '大樂透_' + str(back_time[0]) + '_' + str(back_time[1])
 
         res = requests.get(URL)
         soup = BeautifulSoup(res.text, 'html.parser')
@@ -80,8 +80,8 @@ class Lottery():
         datas = []
         payload = {
             'Lotto649Control_history$chk': 'radYM',
-            'Lotto649Control_history$dropYear': backTime[0],
-            'Lotto649Control_history$dropMonth': backTime[1],
+            'Lotto649Control_history$dropYear': back_time[0],
+            'Lotto649Control_history$dropMonth': back_time[1],
             'Lotto649Control_history$btnSubmit': '查詢'
         }
         payload["__VIEWSTATE"] = soup.select_one("#__VIEWSTATE")["value"]
@@ -97,25 +97,25 @@ class Lottery():
             logging.warning('查無資料 ' + title)
             return
 
-        firstNums = soup.select(".td_w.font_black14b_center")
-        secondNums = soup.select(".td_w.font_red14b_center")
-        dataCount = len(secondNums) / 2
+        first_nums = soup.select(".td_w.font_black14b_center")
+        second_nums = soup.select(".td_w.font_red14b_center")
+        data_count = len(second_nums) / 2
 
-        for i in range(0, int(dataCount)):
-            tempSecondNums = []
+        for i in range(0, int(data_count)):
+            temp_second_nums = []
             stage = soup.select(
                 '#Lotto649Control_history_dlQuery_L649_DrawTerm_' + str(i))
             date = soup.select(
                 '#Lotto649Control_history_dlQuery_L649_DDate_' + str(i))
 
             for j in range(6):
-                tempSecondNums.append(firstNums[((i * 2) * 6) + j].text.strip())
+                temp_second_nums.append(first_nums[((i * 2) * 6) + j].text.strip())
 
             data = {
                 "期別": stage[0].text,
                 "開獎日期": date[0].text,
-                "獎號": tempSecondNums,
-                "特別號": secondNums[i * 2].text.strip()
+                "獎號": temp_second_nums,
+                "特別號": second_nums[i * 2].text.strip()
             }
             datas.append(data)
 
@@ -123,16 +123,16 @@ class Lottery():
             logging.warning('查無資料 ' + title)
             return
 
-        if isPrintData:
-            utils.printToTable(title, datas)
-        if isOutput:
-            utils.outputToJson(title, datas)
+        if is_print_data:
+            utils.print_to_table(title, datas)
+        if is_output:
+            utils.output_to_json(title, datas)
         return datas
 
     # 今彩539
-    def dailyCash(self, isPrintData=True, isOutput=False, backTime=[utils.getCurrentRepublicEra(), utils.getCurrentMonth()]):
+    def daily_cash(self, is_print_data=True, is_output=False, back_time=[utils.get_current_republic_era(), utils.get_current_month()]):
         URL = 'https://www.taiwanlottery.com.tw/Lotto/Dailycash/history.aspx'
-        title = '今彩539_' + str(backTime[0]) + '_' + str(backTime[1])
+        title = '今彩539_' + str(back_time[0]) + '_' + str(back_time[1])
 
         res = requests.get(URL)
         soup = BeautifulSoup(res.text, 'html.parser')
@@ -140,8 +140,8 @@ class Lottery():
 
         payload = {
             'D539Control_history1$chk': 'radYM',
-            'D539Control_history1$dropYear': backTime[0],
-            'D539Control_history1$dropMonth': backTime[1],
+            'D539Control_history1$dropYear': back_time[0],
+            'D539Control_history1$dropMonth': back_time[1],
             'D539Control_history1$btnSubmit': '查詢'
         }
         payload["__VIEWSTATE"] = soup.select_one("#__VIEWSTATE")["value"]
@@ -157,39 +157,39 @@ class Lottery():
             logging.warning('查無資料 ' + title)
             return
 
-        firstNums = soup.select(".td_w.font_black14b_center")
-        dataCount = len(firstNums) / 5 / 2
+        first_nums = soup.select(".td_w.font_black14b_center")
+        data_count = len(first_nums) / 5 / 2
 
-        for i in range(0, int(dataCount)):
-            tempSecondNums = []
+        for i in range(0, int(data_count)):
+            temp_second_nums = []
             stage = soup.select(
                 '#D539Control_history1_dlQuery_D539_DrawTerm_' + str(i))
             date = soup.select(
                 '#D539Control_history1_dlQuery_D539_DDate_' + str(i))
 
             for j in range(5):
-                tempSecondNums.append(firstNums[((i * 2) * 5) + j].text.strip())
+                temp_second_nums.append(first_nums[((i * 2) * 5) + j].text.strip())
 
             data = {
                 "期別": stage[0].text,
                 "開獎日期": date[0].text,
-                "獎號": tempSecondNums,
+                "獎號": temp_second_nums,
             }
             datas.append(data)
 
         if len(datas) == 0:
             logging.warning('查無資料 ' + title)
             return
-        if isPrintData:
-            utils.printToTable(title, datas)
-        if isOutput:
-            utils.outputToJson(title, datas)
+        if is_print_data:
+            utils.print_to_table(title, datas)
+        if is_output:
+            utils.output_to_json(title, datas)
         return datas
 
     # 雙贏彩
-    def lotto1224(self, isPrintData=True, isOutput=False, backTime=[utils.getCurrentRepublicEra(), utils.getCurrentMonth()]):
+    def lotto1224(self, is_print_data=True, is_output=False, back_time=[utils.get_current_republic_era(), utils.get_current_month()]):
         URL = 'https://www.taiwanlottery.com.tw/Lotto/Lotto1224/history.aspx'
-        title = '雙贏彩_' + str(backTime[0]) + '_' + str(backTime[1])
+        title = '雙贏彩_' + str(back_time[0]) + '_' + str(back_time[1])
 
         res = requests.get(URL)
         soup = BeautifulSoup(res.text, 'html.parser')
@@ -197,8 +197,8 @@ class Lottery():
 
         payload = {
             'Lotto1224Control_history$chk': 'radYM',
-            'Lotto1224Control_history$dropYear': backTime[0],
-            'Lotto1224Control_history$dropMonth': backTime[1],
+            'Lotto1224Control_history$dropYear': back_time[0],
+            'Lotto1224Control_history$dropMonth': back_time[1],
             'Lotto1224Control_history$btnSubmit': '查詢'
         }
         payload["__VIEWSTATE"] = soup.select_one("#__VIEWSTATE")["value"]
@@ -214,59 +214,59 @@ class Lottery():
             logging.warning('查無資料 ' + title)
             return
 
-        firstNums = soup.select(".td_w.font_black14b_center")
-        dataCount = len(firstNums) / 2 / 12
+        first_nums = soup.select(".td_w.font_black14b_center")
+        data_count = len(first_nums) / 2 / 12
 
-        for i in range(0, int(dataCount)):
-            tempSecondNums = []
+        for i in range(0, int(data_count)):
+            temp_second_nums = []
             stage = soup.select(
                 '#Lotto1224Control_history_dlQuery_Lotto1224_DrawTerm_' + str(i))
             date = soup.select(
                 '#Lotto1224Control_history_dlQuery_Lotto1224_DDate_' + str(i))
 
             for j in range(12):
-                tempSecondNums.append(firstNums[((i * 2) * 12) + j].text.strip())
+                temp_second_nums.append(first_nums[((i * 2) * 12) + j].text.strip())
 
             data = {
                 "期別": stage[0].text,
                 "開獎日期": date[0].text,
-                "獎號": tempSecondNums,
+                "獎號": temp_second_nums,
             }
             datas.append(data)
 
         if len(datas) == 0:
             logging.warning('查無資料 ' + title)
             return
-        if isPrintData:
-            utils.printToTable(title, datas)
-        if isOutput:
-            utils.outputToJson(title, datas)
+        if is_print_data:
+            utils.print_to_table(title, datas)
+        if is_output:
+            utils.output_to_json(title, datas)
         return datas
 
     # 威力彩歷史查詢
-    def superLottoBack(self, isPrintData=True, isOutput=True, backMonth='0'):
-        for i in range(int(backMonth), -1, -1):
+    def super_lotto_back(self, is_print_data=True, is_output=True, back_month='0'):
+        for i in range(int(back_month), -1, -1):
             time.sleep(random.random())
-            self.superLotto(isPrintData, isOutput, utils.monthDiff(i))
-            logging.debug(str(utils.monthDiff(i)[0]) + '_' + str(utils.monthDiff(i)[1]))
+            self.super_lotto(is_print_data, is_output, utils.month_diff(i))
+            logging.debug(str(utils.month_diff(i)[0]) + '_' + str(utils.month_diff(i)[1]))
 
     # 大樂透歷史查詢
-    def lotto649Back(self, isPrintData=True, isOutput=True, backMonth='0'):
-        for i in range(int(backMonth), -1, -1):
+    def lotto649_back(self, is_print_data=True, is_output=True, back_month='0'):
+        for i in range(int(back_month), -1, -1):
             time.sleep(random.random())
-            self.lotto649(isPrintData, isOutput, utils.monthDiff(i))
-            logging.debug(str(utils.monthDiff(i)[0]) + '_' + str(utils.monthDiff(i)[1]))
+            self.lotto649(is_print_data, is_output, utils.month_diff(i))
+            logging.debug(str(utils.month_diff(i)[0]) + '_' + str(utils.month_diff(i)[1]))
 
     # 今彩539歷史查詢
-    def dailyCashBack(self, isPrintData=True, isOutput=True, backMonth='0'):
-        for i in range(int(backMonth), -1, -1):
+    def daily_cash_back(self, is_print_data=True, is_output=True, back_month='0'):
+        for i in range(int(back_month), -1, -1):
             time.sleep(random.random())
-            self.dailyCash(isPrintData, isOutput, utils.monthDiff(i))
-            logging.debug(str(utils.monthDiff(i)[0]) + '_' + str(utils.monthDiff(i)[1]))
+            self.daily_cash(is_print_data, is_output, utils.month_diff(i))
+            logging.debug(str(utils.month_diff(i)[0]) + '_' + str(utils.month_diff(i)[1]))
 
     # 雙贏彩歷史查詢
-    def lotto1224Back(self, isPrintData=True, isOutput=True, backMonth='0'):
-        for i in range(int(backMonth), -1, -1):
+    def lotto1224_back(self, is_print_data=True, is_output=True, back_month='0'):
+        for i in range(int(back_month), -1, -1):
             time.sleep(random.random())
-            self.lotto1224(isPrintData, isOutput, utils.monthDiff(i))
-            logging.debug(str(utils.monthDiff(i)[0]) + '_' + str(utils.monthDiff(i)[1]))
+            self.lotto1224(is_print_data, is_output, utils.month_diff(i))
+            logging.debug(str(utils.month_diff(i)[0]) + '_' + str(utils.month_diff(i)[1]))

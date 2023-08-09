@@ -27,51 +27,51 @@ def main():
     lottery = Lottery()
 
     if (args.output is False and args.game == '' and args.back == 0 and args.time == 0):
-        lottery.superLotto()
+        lottery.super_lotto()
         lottery.lotto649()
-        lottery.dailyCash()
+        lottery.daily_cash()
         lottery.lotto1224()
     elif (args.output is True and args.game == '' and args.back == 0 and args.time == 0):
-        lottery.superLotto(True, True)
+        lottery.super_lotto(True, True)
         lottery.lotto649(True, True)
-        lottery.dailyCash(True, True)
+        lottery.daily_cash(True, True)
         lottery.lotto1224(True, True)
     elif (args.output is False and args.game != '' and args.back != 0 and args.time == 0):
         if (args.game == '威力彩'):
-            lottery.superLottoBack(True, False, args.back)
+            lottery.super_lotto_back(True, False, args.back)
         elif (args.game == '大樂透'):
-            lottery.lotto649Back(True, False, args.back)
+            lottery.lotto649_back(True, False, args.back)
         elif (args.game == '今彩539'):
-            lottery.dailyCashBack(True, False, args.back)
+            lottery.daily_cash_back(True, False, args.back)
         elif (args.game == '雙贏彩'):
-            lottery.lotto1224Back(True, False, args.back)
+            lottery.lotto1224_back(True, False, args.back)
     elif (args.output is True and args.game != '' and args.back != 0 and args.time == 0):
         if (args.game == '威力彩'):
-            lottery.superLottoBack(True, True, args.back)
+            lottery.super_lotto_back(True, True, args.back)
         elif (args.game == '大樂透'):
-            lottery.lotto649Back(True, True, args.back)
+            lottery.lotto649_back(True, True, args.back)
         elif (args.game == '今彩539'):
-            lottery.dailyCashBack(True, True, args.back)
+            lottery.daily_cash_back(True, True, args.back)
         elif (args.game == '雙贏彩'):
-            lottery.lotto1224Back(True, True, args.back)
+            lottery.lotto1224_back(True, True, args.back)
     elif (args.output is False and args.game != '' and args.back == 0 and args.time != 0):
         if (args.game == '威力彩'):
-            lottery.superLotto(True, False, utils.convertToRepublicEraMonth(args.time))
+            lottery.super_lotto(True, False, utils.convert_to_republic_era_month(args.time))
         elif (args.game == '大樂透'):
-            lottery.lotto649(True, False, utils.convertToRepublicEraMonth(args.time))
+            lottery.lotto649(True, False, utils.convert_to_republic_era_month(args.time))
         elif (args.game == '今彩539'):
-            lottery.dailyCash(True, False, utils.convertToRepublicEraMonth(args.time))
+            lottery.daily_cash(True, False, utils.convert_to_republic_era_month(args.time))
         elif (args.game == '雙贏彩'):
-            lottery.lotto1224(True, False, utils.convertToRepublicEraMonth(args.time))
+            lottery.lotto1224(True, False, utils.convert_to_republic_era_month(args.time))
     elif (args.output is True and args.game != '' and args.back == 0 and args.time != 0):
         if (args.game == '威力彩'):
-            lottery.superLotto(True, True, utils.convertToRepublicEraMonth(args.time))
+            lottery.super_lotto(True, True, utils.convert_to_republic_era_month(args.time))
         elif (args.game == '大樂透'):
-            lottery.lotto649(True, True, utils.convertToRepublicEraMonth(args.time))
+            lottery.lotto649(True, True, utils.convert_to_republic_era_month(args.time))
         elif (args.game == '今彩539'):
-            lottery.dailyCash(True, True, utils.convertToRepublicEraMonth(args.time))
+            lottery.daily_cash(True, True, utils.convert_to_republic_era_month(args.time))
         elif (args.game == '雙贏彩'):
-            lottery.lotto1224(True, True, utils.convertToRepublicEraMonth(args.time))
+            lottery.lotto1224(True, True, utils.convert_to_republic_era_month(args.time))
 
 
 if __name__ == '__main__':
