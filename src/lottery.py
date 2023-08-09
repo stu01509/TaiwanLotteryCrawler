@@ -9,13 +9,16 @@ import random
 
 class Lottery():
 
+    html_parser = 'html.parser'
+    no_data = '查無資料'
+
     # 威力彩
     def super_lotto(self, is_print_data=True, is_output=False, back_time=[utils.get_current_republic_era(), utils.get_current_month()]):
         URL = 'https://www.taiwanlottery.com.tw/Lotto/SuperLotto638/history.aspx'
         title = '威力彩_' + str(back_time[0]) + '_' + str(back_time[1])
 
         res = requests.get(URL)
-        soup = BeautifulSoup(res.text, 'html.parser')
+        soup = BeautifulSoup(res.text, self.html_parser)
 
         datas = []
         payload = {
@@ -31,10 +34,10 @@ class Lottery():
             "#__EVENTVALIDATION")["value"]
 
         res = requests.post(URL, data=payload)
-        soup = BeautifulSoup(res.text, 'html.parser')
+        soup = BeautifulSoup(res.text, self.html_parser)
 
-        if ('查無資料' in res.text):
-            logging.warning('查無資料 ' + title)
+        if (self.no_data in res.text):
+            logging.warning(self.no_data + title)
             return
 
         first_nums = soup.select(".td_w.font_black14b_center")
@@ -60,7 +63,7 @@ class Lottery():
             datas.append(data)
 
         if len(datas) == 0:
-            logging.warning('查無資料 ' + title)
+            logging.warning(self.no_data + title)
             return
 
         if is_print_data:
@@ -75,7 +78,7 @@ class Lottery():
         title = '大樂透_' + str(back_time[0]) + '_' + str(back_time[1])
 
         res = requests.get(URL)
-        soup = BeautifulSoup(res.text, 'html.parser')
+        soup = BeautifulSoup(res.text, self.html_parser)
 
         datas = []
         payload = {
@@ -91,10 +94,10 @@ class Lottery():
             "#__EVENTVALIDATION")["value"]
 
         res = requests.post(URL, data=payload)
-        soup = BeautifulSoup(res.text, 'html.parser')
+        soup = BeautifulSoup(res.text, self.html_parser)
 
-        if ('查無資料' in res.text):
-            logging.warning('查無資料 ' + title)
+        if (self.no_data in res.text):
+            logging.warning(self.no_data + title)
             return
 
         first_nums = soup.select(".td_w.font_black14b_center")
@@ -120,7 +123,7 @@ class Lottery():
             datas.append(data)
 
         if len(datas) == 0:
-            logging.warning('查無資料 ' + title)
+            logging.warning(self.no_data + title)
             return
 
         if is_print_data:
@@ -135,7 +138,7 @@ class Lottery():
         title = '今彩539_' + str(back_time[0]) + '_' + str(back_time[1])
 
         res = requests.get(URL)
-        soup = BeautifulSoup(res.text, 'html.parser')
+        soup = BeautifulSoup(res.text, self.html_parser)
         datas = []
 
         payload = {
@@ -151,10 +154,10 @@ class Lottery():
             "#__EVENTVALIDATION")["value"]
 
         res = requests.post(URL, data=payload)
-        soup = BeautifulSoup(res.text, 'html.parser')
+        soup = BeautifulSoup(res.text, self.html_parser)
 
-        if ('查無資料' in res.text):
-            logging.warning('查無資料 ' + title)
+        if (self.no_data in res.text):
+            logging.warning(self.no_data + title)
             return
 
         first_nums = soup.select(".td_w.font_black14b_center")
@@ -178,7 +181,7 @@ class Lottery():
             datas.append(data)
 
         if len(datas) == 0:
-            logging.warning('查無資料 ' + title)
+            logging.warning(self.no_data + title)
             return
         if is_print_data:
             utils.print_to_table(title, datas)
@@ -192,7 +195,7 @@ class Lottery():
         title = '雙贏彩_' + str(back_time[0]) + '_' + str(back_time[1])
 
         res = requests.get(URL)
-        soup = BeautifulSoup(res.text, 'html.parser')
+        soup = BeautifulSoup(res.text, self.html_parser)
         datas = []
 
         payload = {
@@ -208,10 +211,10 @@ class Lottery():
             "#__EVENTVALIDATION")["value"]
 
         res = requests.post(URL, data=payload)
-        soup = BeautifulSoup(res.text, 'html.parser')
+        soup = BeautifulSoup(res.text, self.html_parser)
 
-        if ('查無資料' in res.text):
-            logging.warning('查無資料 ' + title)
+        if (self.no_data in res.text):
+            logging.warning(self.no_data + title)
             return
 
         first_nums = soup.select(".td_w.font_black14b_center")
@@ -235,7 +238,7 @@ class Lottery():
             datas.append(data)
 
         if len(datas) == 0:
-            logging.warning('查無資料 ' + title)
+            logging.warning(self.no_data + title)
             return
         if is_print_data:
             utils.print_to_table(title, datas)
