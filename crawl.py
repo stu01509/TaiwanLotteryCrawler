@@ -13,6 +13,7 @@ LOTTERY_GAME_MAPPING = {
     'LOTTO1224': '雙贏彩',
 }
 
+
 def main():
     parser = argparse.ArgumentParser(
         description='Taiwan Lottery 台灣彩券爬蟲',
