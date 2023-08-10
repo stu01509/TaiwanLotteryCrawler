@@ -7,7 +7,7 @@ from src import utils
 import random
 
 
-class Lottery():
+class TaiwanLotteryCrawler():
 
     html_parser = 'html.parser'
     no_data = '查無資料'

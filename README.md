@@ -1,130 +1,146 @@
 # Taiwan Lottery Crawler
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-![Test Status](https://github.com/stu01509/TaiwanLotteryCrawler/actions/workflows/ci.yaml/badge.svg)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+[![PyPI](https://img.shields.io/pypi/v/taiwanlottery)](https://pypi.org/project/taiwanlottery/)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/taiwanlottery)](https://pypi.org/project/taiwanlottery/)
+[![CI Status](https://github.com/stu01509/TaiwanLotteryCrawler/actions/workflows/ci.yaml/badge.svg)](https://github.com/stu01509/TaiwanLotteryCrawler/actions/workflows/ci.yaml)
+[![codecov](https://codecov.io/gh/stu01509/TaiwanLotteryCrawler/branch/master/graph/badge.svg?token=AX0LW032B4)](https://codecov.io/gh/stu01509/TaiwanLotteryCrawler)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=stu01509_TaiwanLotteryCrawler&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=stu01509_TaiwanLotteryCrawler)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=stu01509_TaiwanLotteryCrawler&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=stu01509_TaiwanLotteryCrawler)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=stu01509_TaiwanLotteryCrawler&metric=bugs)](https://sonarcloud.io/summary/new_code?id=stu01509_TaiwanLotteryCrawler)
+![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+
+## 介紹
 
 這個專案是用來爬取 [台灣彩券](https://www.taiwanlottery.com.tw/) 官網上歷史的開獎紀錄，目前支援**威力彩**、**大樂透**、**今彩539**、**雙贏彩** 4 種彩券遊戲。
 
-## Features
+## 功能
 
-- 爬取 威力彩、大樂透、今彩539、雙贏彩 4 種彩券遊戲的開獎紀錄。
-- 爬取結果可直接輸出產生成 `json` 格式檔案進行後續使用。
-- 針對單一的彩券遊戲可以爬取幾個月前的開獎紀錄。
+- 爬取威力彩、大樂透、今彩539、雙贏彩 4 種彩券遊戲的開獎紀錄。
 
-## Requirements
+## 環境需求
 
-- [requests](https://pypi.org/project/requests/)
-- [BeautifulSoup](https://pypi.org/project/beautifulsoup4/)
-- [terminaltables](https://pypi.org/project/terminaltables/)
+Python >= 3.6
 
-## Install
+## 安裝
 
 ```shell
-$ git clone https://github.com/stu01509/TaiwanLotteryCrawler.git
-$ cd TaiwanLotteryCrawler
-$ pip install -r requirements.txt
+pip install taiwanlottery
 ```
 
-## Command
+## 範例
 
-### 爬取當月份的開獎紀錄
+### 爬取當月份的開獎紀錄(民國年份)
 
-```shell
-$ python crawl.py
+威力彩
+
+```python
+from TaiwanLotteryCrawler import TaiwanLotteryCrawler
+
+lottery = TaiwanLotteryCrawler()
+result = lottery.super_lotto()
+print(result)
 ```
 
-### 爬取當月份的開獎紀錄並輸出 JSON
+大樂透
 
-```shell
-$ python crawl.py -o
+```python
+from TaiwanLotteryCrawler import TaiwanLotteryCrawler
+
+lottery = TaiwanLotteryCrawler()
+result = lottery.lotto649()
+print(result)
 ```
 
-### 往回爬取指定彩券的幾個月前的開獎紀錄
+今彩539
 
-爬取 5 個月前的開獎資料
-```shell
-$ python crawl.py 威力彩 -b 5
+```python
+from TaiwanLotteryCrawler import TaiwanLotteryCrawler
+
+lottery = TaiwanLotteryCrawler()
+result = lottery.daily_cash()
+print(result)
 ```
 
-```shell
-$ python crawl.py 大樂透 -b 5
+雙贏彩
+
+```python
+from TaiwanLotteryCrawler import TaiwanLotteryCrawler
+
+lottery = TaiwanLotteryCrawler()
+result = lottery.lotto1224()
+print(result)
 ```
 
-```shell
-$ python crawl.py 今彩539 -b 5
+---
+
+### 爬取指定年月的開獎紀錄
+
+威力彩
+
+```python
+from TaiwanLotteryCrawler import TaiwanLotteryCrawler
+
+lottery = TaiwanLotteryCrawler()
+result = lottery.super_lotto(False, False, ['113', '6'])
+print(result)
 ```
 
-```shell
-$ python crawl.py 雙贏彩 -b 5
+大樂透
+
+```python
+from TaiwanLotteryCrawler import TaiwanLotteryCrawler
+
+lottery = TaiwanLotteryCrawler()
+result = lottery.lotto649(False, False, ['113', '6'])
+print(result)
 ```
 
-### 往回爬取指定彩券的幾個月前的開獎紀錄並輸出 JSON
+今彩539
 
-爬取 5 個月前的開獎資料並輸出 JSON
-```shell
-$ python crawl.py 威力彩 -b 5 -o
+```python
+from TaiwanLotteryCrawler import TaiwanLotteryCrawler
+
+lottery = TaiwanLotteryCrawler()
+result = lottery.daily_cash(False, False, ['113', '6'])
+print(result)
 ```
 
-```shell
-$ python crawl.py 大樂透 -b 5 -o
+雙贏彩
+
+```python
+from TaiwanLotteryCrawler import TaiwanLotteryCrawler
+
+lottery = TaiwanLotteryCrawler()
+result = lottery.lotto1224(False, False, ['113', '6'])
+print(result)
 ```
 
-```shell
-$ python crawl.py 今彩539 -b 5 -o
+---
+
+### 參數設定
+
+關閉 Terminal 顯示
+
+```python
+from TaiwanLotteryCrawler import TaiwanLotteryCrawler
+
+lottery = TaiwanLotteryCrawler()
+result = lottery.lotto649(False)
+print(result)
 ```
 
-```shell
-$ python crawl.py 雙贏彩 -b 5 -o
+儲存開獎結果成 JSON 檔案
+
+```python
+from TaiwanLotteryCrawler import TaiwanLotteryCrawler
+
+lottery = TaiwanLotteryCrawler()
+result = lottery.lotto649(False, True)
+print(result)
 ```
 
-### 爬取指定彩券的年月的開獎紀錄
-
-爬取 2020 年 4 月份的開獎紀錄
-
-```shell
-$ python crawl.py 威力彩 -t 2020-04
-```
-
-```shell
-$ python crawl.py 大樂透 -t 2020-04
-```
-
-```shell
-$ python crawl.py 今彩539 -t 2020-04
-```
-
-```shell
-$ python crawl.py 雙贏彩 -t 2020-04
-```
-
-### 爬取指定彩券的年月的開獎紀錄並輸出 JSON
-
-爬取 2020 年 4 月份的開獎紀錄並輸出 JSON
-
-```shell
-$ python crawl.py 威力彩 -t 2020-04 -o
-```
-
-```shell
-$ python crawl.py 大樂透 -t 2020-04 -o
-```
-
-```shell
-$ python crawl.py 今彩539 -t 2020-04 -o
-```
-
-```shell
-$ python crawl.py 雙贏彩 -t 2020-04 -o
-```
-
-### 指令說明
-
-```shell
-$ python crawl.py -h
-```
-
-## Data Source
+## 資料來源
 
 - [威力彩](https://www.taiwanlottery.com.tw/Lotto/SuperLotto638/history.aspx)
 - [大樂透](https://www.taiwanlottery.com.tw/Lotto/Lotto649/history.aspx)
