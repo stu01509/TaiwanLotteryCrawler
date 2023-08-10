@@ -1,14 +1,16 @@
-name: CI
+name: Merge
 
 on:
-  - pull_request
+  push:
+    branches:
+      - master
 
 jobs:
   ci:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ['3.10', '3.11']
+        python-version: ['3.10']
 
     steps:
       - uses: actions/checkout@v3
