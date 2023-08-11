@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from src.lottery import TaiwanLotteryCrawler
+from TaiwanLottery import TaiwanLotteryCrawler
 
 
 def test_super_lotto():

@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import logging
 import time
-from src import utils
+from TaiwanLottery import utils
 import random
 
 

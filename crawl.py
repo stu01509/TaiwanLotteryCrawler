@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import argparse
 import logging
-from src.lottery import TaiwanLotteryCrawler
-from src import utils
+from TaiwanLottery import TaiwanLotteryCrawler
+from TaiwanLottery import utils
 
 logging.basicConfig(level=logging.INFO)
 
