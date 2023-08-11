@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from src import utils
+from TaiwanLottery import utils
 
 
 def test_convert_to_republic_era_month():
