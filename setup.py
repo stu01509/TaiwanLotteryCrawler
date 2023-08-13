@@ -7,7 +7,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 
 setup(
     name="taiwanlottery",
-    version="1.0.2",
+    version="1.0.3",
     author="Cliff Su",
     author_email="stu01509@gmail.com",
     description="Taiwan Lottery Crawler 台灣彩券爬蟲",

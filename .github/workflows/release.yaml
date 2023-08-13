@@ -1,10 +1,11 @@
-name: CI
+name: Release
 
 on:
-  - pull_request
+  release:
+    types: [created]
 
 jobs:
-  ci:
+  release:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -19,11 +20,13 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-      - name: Pytest Unit Test
-        run: pytest
-      - name: Flake8 Lint Check
-        run: flake8
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v3
+          pip install twine      
+      - name: Build
+        run: python setup.py sdist bdist_wheel
+      - name: Release
+        run: |
+          twine check .\dist\*
+          twine upload .\dist\*
         env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
+          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
