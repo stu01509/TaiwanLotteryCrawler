@@ -30,9 +30,9 @@ pip install taiwanlottery
 
 ## 範例
 
-### 爬取當月份的開獎紀錄(民國年份)
+### 爬取當月份的開獎紀錄
 
-威力彩
+[威力彩](https://codesandbox.io/p/sandbox/dark-breeze-r2yfsf?file=%2Fmain.py%3A6%2C1)
 
 ```python
 from TaiwanLottery import TaiwanLotteryCrawler
@@ -42,7 +42,7 @@ result = lottery.super_lotto()
 print(result)
 ```
 
-大樂透
+[大樂透](https://codesandbox.io/p/sandbox/wei-li-cai-dang-yue-fen-de-kai-jiang-ji-lu-forked-rt67ty)
 
 ```python
 from TaiwanLottery import TaiwanLotteryCrawler
@@ -52,7 +52,7 @@ result = lottery.lotto649()
 print(result)
 ```
 
-今彩539
+[今彩539](https://codesandbox.io/p/sandbox/da-le-tou-dang-yue-fen-de-kai-jiang-ji-lu-forked-n5t886)
 
 ```python
 from TaiwanLottery import TaiwanLotteryCrawler
@@ -62,7 +62,7 @@ result = lottery.daily_cash()
 print(result)
 ```
 
-雙贏彩
+[雙贏彩](https://codesandbox.io/p/sandbox/da-le-tou-dang-yue-fen-de-kai-jiang-ji-lu-forked-vmlhst)
 
 ```python
 from TaiwanLottery import TaiwanLotteryCrawler
@@ -74,45 +74,45 @@ print(result)
 
 ---
 
-### 爬取指定年月的開獎紀錄
+### 爬取指定年月的開獎紀錄(民國年份)
 
-威力彩
+[威力彩](https://codesandbox.io/p/sandbox/da-le-tou-dang-yue-fen-de-kai-jiang-ji-lu-forked-ksq74y)
 
 ```python
 from TaiwanLottery import TaiwanLotteryCrawler
 
 lottery = TaiwanLotteryCrawler()
-result = lottery.super_lotto(False, False, ['113', '6'])
+result = lottery.super_lotto(False, False, ['112', '6'])
 print(result)
 ```
 
-大樂透
+[大樂透](https://codesandbox.io/p/sandbox/wei-li-cai-zhi-ding-nian-yue-de-kai-jiang-ji-lu-forked-lqcfht)
 
 ```python
 from TaiwanLottery import TaiwanLotteryCrawler
 
 lottery = TaiwanLotteryCrawler()
-result = lottery.lotto649(False, False, ['113', '6'])
+result = lottery.lotto649(False, False, ['112', '6'])
 print(result)
 ```
 
-今彩539
+[今彩539](https://codesandbox.io/p/sandbox/wei-li-cai-zhi-ding-nian-yue-de-kai-jiang-ji-lu-forked-ntvjp7)
 
 ```python
 from TaiwanLottery import TaiwanLotteryCrawler
 
 lottery = TaiwanLotteryCrawler()
-result = lottery.daily_cash(False, False, ['113', '6'])
+result = lottery.daily_cash(False, False, ['112', '6'])
 print(result)
 ```
 
-雙贏彩
+[雙贏彩](https://codesandbox.io/p/sandbox/wei-li-cai-zhi-ding-nian-yue-de-kai-jiang-ji-lu-forked-22dtrx)
 
 ```python
 from TaiwanLottery import TaiwanLotteryCrawler
 
 lottery = TaiwanLotteryCrawler()
-result = lottery.lotto1224(False, False, ['113', '6'])
+result = lottery.lotto1224(False, False, ['112', '6'])
 print(result)
 ```
 
