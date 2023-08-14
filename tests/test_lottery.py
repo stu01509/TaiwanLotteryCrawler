@@ -7,7 +7,7 @@ def test_super_lotto():
     lottery = TaiwanLotteryCrawler()
 
     # When user get the 威力彩 2023-06 result without print and output to json
-    super_lotto_result = lottery.super_lotto(False, False, [112, 6])
+    super_lotto_result = lottery.super_lotto([112, 6])
 
     # Then the super_lotto_result should be equal to test result
     assert super_lotto_result == [
@@ -28,7 +28,7 @@ def test_lotto649():
     lottery = TaiwanLotteryCrawler()
 
     # When user get the 大樂透 2023-06 result without print and output to json
-    lotto649_result = lottery.lotto649(False, False, [112, 6])
+    lotto649_result = lottery.lotto649([112, 6])
 
     # Then the lotto649_result should be equal to test result
     assert lotto649_result == [
@@ -49,7 +49,7 @@ def test_daily_cash():
     lottery = TaiwanLotteryCrawler()
 
     # When user get the 今彩539 2023-06 result without print and output to json
-    daily_cash_result = lottery.daily_cash(False, False, [112, 6])
+    daily_cash_result = lottery.daily_cash([112, 6])
 
     # Then the daily_cash_result should be equal to test result
     assert daily_cash_result == [
@@ -87,7 +87,7 @@ def test_lotto1224():
     lottery = TaiwanLotteryCrawler()
 
     # When user get the 雙贏彩 2023-06 result without print and output to json
-    lotto1224_result = lottery.lotto1224(False, False, [112, 6])
+    lotto1224_result = lottery.lotto1224([112, 6])
 
     # Then the lotto1224_result should be equal to test result
     assert lotto1224_result == [

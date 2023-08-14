@@ -82,7 +82,7 @@ print(result)
 from TaiwanLottery import TaiwanLotteryCrawler
 
 lottery = TaiwanLotteryCrawler()
-result = lottery.super_lotto(False, False, ['112', '6'])
+result = lottery.super_lotto(['112', '6'])
 print(result)
 ```
 
@@ -92,7 +92,7 @@ print(result)
 from TaiwanLottery import TaiwanLotteryCrawler
 
 lottery = TaiwanLotteryCrawler()
-result = lottery.lotto649(False, False, ['112', '6'])
+result = lottery.lotto649(['112', '6'])
 print(result)
 ```
 
@@ -102,7 +102,7 @@ print(result)
 from TaiwanLottery import TaiwanLotteryCrawler
 
 lottery = TaiwanLotteryCrawler()
-result = lottery.daily_cash(False, False, ['112', '6'])
+result = lottery.daily_cash(['112', '6'])
 print(result)
 ```
 
@@ -112,31 +112,7 @@ print(result)
 from TaiwanLottery import TaiwanLotteryCrawler
 
 lottery = TaiwanLotteryCrawler()
-result = lottery.lotto1224(False, False, ['112', '6'])
-print(result)
-```
-
----
-
-### 參數設定
-
-關閉 Terminal 顯示
-
-```python
-from TaiwanLottery import TaiwanLotteryCrawler
-
-lottery = TaiwanLotteryCrawler()
-result = lottery.lotto649(False)
-print(result)
-```
-
-儲存開獎結果成 JSON 檔案
-
-```python
-from TaiwanLottery import TaiwanLotteryCrawler
-
-lottery = TaiwanLotteryCrawler()
-result = lottery.lotto649(False, True)
+result = lottery.lotto1224(['112', '6'])
 print(result)
 ```
 
