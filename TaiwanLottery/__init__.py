@@ -13,7 +13,7 @@ class TaiwanLotteryCrawler():
     no_data = '查無資料'
 
     # 威力彩
-    def super_lotto(self, is_print_data=True, is_output=False, back_time=[utils.get_current_republic_era(), utils.get_current_month()]):
+    def super_lotto(self, back_time=[utils.get_current_republic_era(), utils.get_current_month()]):
         URL = 'https://www.taiwanlottery.com.tw/Lotto/SuperLotto638/history.aspx'
         title = '威力彩_' + str(back_time[0]) + '_' + str(back_time[1])
 
@@ -66,14 +66,10 @@ class TaiwanLotteryCrawler():
             logging.warning(self.no_data + title)
             return
 
-        if is_print_data:
-            utils.print_to_table(title, datas)
-        if is_output:
-            utils.output_to_json(title, datas)
         return datas
 
     # 大樂透
-    def lotto649(self, is_print_data=True, is_output=False, back_time=[utils.get_current_republic_era(), utils.get_current_month()]):
+    def lotto649(self, back_time=[utils.get_current_republic_era(), utils.get_current_month()]):
         URL = 'https://www.taiwanlottery.com.tw/Lotto/Lotto649/history.aspx'
         title = '大樂透_' + str(back_time[0]) + '_' + str(back_time[1])
 
@@ -126,14 +122,10 @@ class TaiwanLotteryCrawler():
             logging.warning(self.no_data + title)
             return
 
-        if is_print_data:
-            utils.print_to_table(title, datas)
-        if is_output:
-            utils.output_to_json(title, datas)
         return datas
 
     # 今彩539
-    def daily_cash(self, is_print_data=True, is_output=False, back_time=[utils.get_current_republic_era(), utils.get_current_month()]):
+    def daily_cash(self, back_time=[utils.get_current_republic_era(), utils.get_current_month()]):
         URL = 'https://www.taiwanlottery.com.tw/Lotto/Dailycash/history.aspx'
         title = '今彩539_' + str(back_time[0]) + '_' + str(back_time[1])
 
@@ -183,14 +175,11 @@ class TaiwanLotteryCrawler():
         if len(datas) == 0:
             logging.warning(self.no_data + title)
             return
-        if is_print_data:
-            utils.print_to_table(title, datas)
-        if is_output:
-            utils.output_to_json(title, datas)
+
         return datas
 
     # 雙贏彩
-    def lotto1224(self, is_print_data=True, is_output=False, back_time=[utils.get_current_republic_era(), utils.get_current_month()]):
+    def lotto1224(self, back_time=[utils.get_current_republic_era(), utils.get_current_month()]):
         URL = 'https://www.taiwanlottery.com.tw/Lotto/Lotto1224/history.aspx'
         title = '雙贏彩_' + str(back_time[0]) + '_' + str(back_time[1])
 
@@ -240,36 +229,33 @@ class TaiwanLotteryCrawler():
         if len(datas) == 0:
             logging.warning(self.no_data + title)
             return
-        if is_print_data:
-            utils.print_to_table(title, datas)
-        if is_output:
-            utils.output_to_json(title, datas)
+
         return datas
 
     # 威力彩歷史查詢
-    def super_lotto_back(self, is_print_data=True, is_output=True, back_month='0'):
+    def super_lotto_back(self, back_month='0'):
         for i in range(int(back_month), -1, -1):
             time.sleep(random.random())
-            self.super_lotto(is_print_data, is_output, utils.month_diff(i))
+            self.super_lotto(utils.month_diff(i))
             logging.debug(str(utils.month_diff(i)[0]) + '_' + str(utils.month_diff(i)[1]))
 
     # 大樂透歷史查詢
-    def lotto649_back(self, is_print_data=True, is_output=True, back_month='0'):
+    def lotto649_back(self, back_month='0'):
         for i in range(int(back_month), -1, -1):
             time.sleep(random.random())
-            self.lotto649(is_print_data, is_output, utils.month_diff(i))
+            self.lotto649(utils.month_diff(i))
             logging.debug(str(utils.month_diff(i)[0]) + '_' + str(utils.month_diff(i)[1]))
 
     # 今彩539歷史查詢
-    def daily_cash_back(self, is_print_data=True, is_output=True, back_month='0'):
+    def daily_cash_back(self, back_month='0'):
         for i in range(int(back_month), -1, -1):
             time.sleep(random.random())
-            self.daily_cash(is_print_data, is_output, utils.month_diff(i))
+            self.daily_cash(utils.month_diff(i))
             logging.debug(str(utils.month_diff(i)[0]) + '_' + str(utils.month_diff(i)[1]))
 
     # 雙贏彩歷史查詢
-    def lotto1224_back(self, is_print_data=True, is_output=True, back_month='0'):
+    def lotto1224_back(self, back_month='0'):
         for i in range(int(back_month), -1, -1):
             time.sleep(random.random())
-            self.lotto1224(is_print_data, is_output, utils.month_diff(i))
+            self.lotto1224(utils.month_diff(i))
             logging.debug(str(utils.month_diff(i)[0]) + '_' + str(utils.month_diff(i)[1]))
