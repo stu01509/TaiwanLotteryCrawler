@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 import datetime
-import math
-import logging
 import json
+import logging
+import math
+
 from terminaltables import AsciiTable
 
 
