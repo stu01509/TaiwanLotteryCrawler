@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
-from setuptools import setup, find_packages
-from pathlib import Path
 import os
+from pathlib import Path
+
+from setuptools import find_packages, setup
 
 here = os.path.abspath(os.path.dirname(__file__))
 
@@ -21,7 +22,6 @@ setup(
         "pytest>=7.0",
         "pytest-cov>=4.0",
         "flake8>=6.0",
-        "tox>=4.6"
     ],
     keywords=['python', 'taiwanlottery', 'crawler', 'lottery', 'taiwan', '台灣彩券', '樂透', '彩券'],
     classifiers=[
