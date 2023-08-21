@@ -22,6 +22,7 @@ setup(
         "pytest>=7.0",
         "pytest-cov>=4.0",
         "flake8>=6.0",
+        "pre-commit>=3.3"
     ],
     keywords=['python', 'taiwanlottery', 'crawler', 'lottery', 'taiwan', '台灣彩券', '樂透', '彩券'],
     classifiers=[
