@@ -9,6 +9,7 @@ from TaiwanLottery import utils
 
 class TaiwanLotteryCrawler():
     COUNT_OF_3D_LOTTERY_PRIZE_NUMBER = 3
+    COUNT_OF_4D_LOTTERY_PRIZE_NUMBER = 4
 
     html_parser = 'html.parser'
     no_data = '查無資料'
@@ -285,6 +286,60 @@ class TaiwanLotteryCrawler():
             return
 
         return datas
+
+    # 4星彩
+    def lotto4d(self, back_time=[utils.get_current_republic_era(), utils.get_current_month()]):
+        print('------------------- lotto4d ------------------')
+        URL = 'https://www.taiwanlottery.com.tw/Lotto/4D/history.aspx'
+        title = '4星彩_' + str(back_time[0]) + '_' + str(back_time[1])
+
+        res = requests.get(URL)
+        soup = BeautifulSoup(res.text, self.html_parser)
+        datas = []
+
+        payload = {
+            'L4DControl_history1$chk': 'radYM',
+            'L4DControl_history1$dropYear': back_time[0],
+            'L4DControl_history1$dropMonth': back_time[1],
+            'L4DControl_history1$btnSubmit': '查詢'
+        }
+        payload["__VIEWSTATE"] = soup.select_one("#__VIEWSTATE")["value"]
+        payload["__VIEWSTATEGENERATOR"] = soup.select_one(
+            "#__VIEWSTATEGENERATOR")["value"]
+        payload["__EVENTVALIDATION"] = soup.select_one(
+            "#__EVENTVALIDATION")["value"]
+
+        res = requests.post(URL, data=payload)
+        soup = BeautifulSoup(res.text, self.html_parser)
+
+        if (self.no_data in res.text):
+            logging.warning(self.no_data + title)
+            return
+
+        first_nums = soup.select(".td_w.font_black14b_center > span.td_w")
+        data_count = len(first_nums) / self.COUNT_OF_4D_LOTTERY_PRIZE_NUMBER
+        stage = soup.select('table[class*="table_"] > tr:nth-child(3) > td:nth-child(1)')
+        date = soup.select('table[class*="table_"] > tr:nth-child(3) > td:nth-child(2) > p')
+
+        for i in range(0, int(data_count)):
+            temp_second_nums = []
+
+            for j in range(self.COUNT_OF_4D_LOTTERY_PRIZE_NUMBER):
+                temp_second_nums.append(first_nums[((i) * self.COUNT_OF_4D_LOTTERY_PRIZE_NUMBER) + j].text.strip())
+
+            data = {
+                "期別": stage[i].text,
+                "開獎日期": date[i].text.replace('開獎', ''),
+                "獎號": temp_second_nums,
+            }
+            datas.append(data)
+
+        if len(datas) == 0:
+            logging.warning(self.no_data + title)
+            return
+
+        return datas
+
 
     # 威力彩歷史查詢
     def super_lotto_back(self, back_month='0'):
