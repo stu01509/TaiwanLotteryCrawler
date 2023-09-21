@@ -12,11 +12,11 @@
 
 ## 介紹
 
-這個專案是用來爬取 [台灣彩券](https://www.taiwanlottery.com.tw/) 官網上歷史的開獎紀錄，目前支援**威力彩**、**大樂透**、**今彩539**、**雙贏彩** 4 種彩券遊戲。
+這個專案是用來爬取 [台灣彩券](https://www.taiwanlottery.com.tw/) 官網上歷史的開獎紀錄，目前支援**威力彩**、**大樂透**、**今彩539**、**雙贏彩**、**3星彩** 5 種彩券遊戲。
 
 ## 功能
 
-- 爬取威力彩、大樂透、今彩539、雙贏彩 4 種彩券遊戲的開獎紀錄。
+- 爬取威力彩、大樂透、今彩539、雙贏彩、3星彩 5 種彩券遊戲的開獎紀錄。
 
 ## 環境需求
 
@@ -72,6 +72,16 @@ result = lottery.lotto1224()
 print(result)
 ```
 
+[3星彩](https://codesandbox.io/p/sandbox/3xing-cai-dang-yue-fen-de-kai-jiang-ji-lu-vsxs3p)
+
+```python
+from TaiwanLottery import TaiwanLotteryCrawler
+
+lottery = TaiwanLotteryCrawler()
+result = lottery.lotto3d()
+print(result)
+```
+
 ---
 
 ### 爬取指定年月的開獎紀錄(民國年份)
@@ -116,12 +126,23 @@ result = lottery.lotto1224(['112', '6'])
 print(result)
 ```
 
+[3星彩](https://codesandbox.io/p/sandbox/3xing-cai-zhi-ding-nian-yue-de-kai-jiang-ji-lu-vsfvlx)
+
+```python
+from TaiwanLottery import TaiwanLotteryCrawler
+
+lottery = TaiwanLotteryCrawler()
+result = lottery.lotto3d(['112', '8'])
+print(result)
+```
+
 ## 資料來源
 
 - [威力彩](https://www.taiwanlottery.com.tw/Lotto/SuperLotto638/history.aspx)
 - [大樂透](https://www.taiwanlottery.com.tw/Lotto/Lotto649/history.aspx)
 - [今彩539](https://www.taiwanlottery.com.tw/Lotto/Dailycash/history.aspx)
 - [雙贏彩](https://www.taiwanlottery.com.tw/Lotto/Lotto1224/history.aspx)
+- [3星彩](https://www.taiwanlottery.com.tw/Lotto/3D/history.aspx)
 
 ## License
 
