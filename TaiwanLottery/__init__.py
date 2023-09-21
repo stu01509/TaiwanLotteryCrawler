@@ -275,7 +275,7 @@ class TaiwanLotteryCrawler():
 
             data = {
                 "期別": stage[i].text,
-                "開獎日期": date[i].text,
+                "開獎日期": date[i].text.replace('開獎', ''),
                 "獎號": temp_second_nums,
             }
             datas.append(data)
@@ -287,7 +287,6 @@ class TaiwanLotteryCrawler():
         return datas
 
     # 威力彩歷史查詢
-
     def super_lotto_back(self, back_month='0'):
         for i in range(int(back_month), -1, -1):
             time.sleep(random.random())
