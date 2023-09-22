@@ -340,7 +340,6 @@ class TaiwanLotteryCrawler():
 
         return datas
 
-
     # 威力彩歷史查詢
     def super_lotto_back(self, back_month='0'):
         for i in range(int(back_month), -1, -1):
