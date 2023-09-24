@@ -10,6 +10,7 @@ from TaiwanLottery import utils
 class TaiwanLotteryCrawler():
     COUNT_OF_3D_LOTTERY_PRIZE_NUMBER = 3
     COUNT_OF_4D_LOTTERY_PRIZE_NUMBER = 4
+    COUNT_OF_38M6_LOTTERY_PRIZE_NUMBER = 6
 
     html_parser = 'html.parser'
     no_data = '查無資料'
@@ -289,7 +290,6 @@ class TaiwanLotteryCrawler():
 
     # 4星彩
     def lotto4d(self, back_time=[utils.get_current_republic_era(), utils.get_current_month()]):
-        print('------------------- lotto4d ------------------')
         URL = 'https://www.taiwanlottery.com.tw/Lotto/4D/history.aspx'
         title = '4星彩_' + str(back_time[0]) + '_' + str(back_time[1])
 
