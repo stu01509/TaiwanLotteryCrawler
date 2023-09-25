@@ -2,14 +2,17 @@
 import logging
 import random
 import time
+
 import requests
 from bs4 import BeautifulSoup
+
 from TaiwanLottery import utils
 
 
 class TaiwanLotteryCrawler():
     COUNT_OF_3D_LOTTERY_PRIZE_NUMBER = 3
     COUNT_OF_4D_LOTTERY_PRIZE_NUMBER = 4
+    COUNT_OF_38M6_LOTTERY_PRIZE_NUMBER = 6
 
     html_parser = 'html.parser'
     no_data = '查無資料'
@@ -289,7 +292,6 @@ class TaiwanLotteryCrawler():
 
     # 4星彩
     def lotto4d(self, back_time=[utils.get_current_republic_era(), utils.get_current_month()]):
-        print('------------------- lotto4d ------------------')
         URL = 'https://www.taiwanlottery.com.tw/Lotto/4D/history.aspx'
         title = '4星彩_' + str(back_time[0]) + '_' + str(back_time[1])
 
@@ -330,6 +332,63 @@ class TaiwanLotteryCrawler():
             data = {
                 "期別": stage[i].text,
                 "開獎日期": date[i].text.replace('開獎', ''),
+                "獎號": temp_second_nums,
+            }
+            datas.append(data)
+
+        if len(datas) == 0:
+            logging.warning(self.no_data + title)
+            return
+
+        return datas
+
+    # 38樂合彩
+    def lotto38m6(self, back_time=[utils.get_current_republic_era(), utils.get_current_month()]):
+        URL = 'https://www.taiwanlottery.com.tw/Lotto/38m6/history.aspx'
+        title = '38樂合彩_' + str(back_time[0]) + '_' + str(back_time[1])
+
+        res = requests.get(URL)
+        soup = BeautifulSoup(res.text, self.html_parser)
+
+        datas = []
+
+        payload = {
+            'M638Control_history1$chk': 'radYM',
+            'M638Control_history1$dropYear': back_time[0],
+            'M638Control_history1$dropMonth': back_time[1],
+            'M638Control_history1$btnSubmit': '查詢',
+        }
+
+        payload["__VIEWSTATEENCRYPTED"] = soup.select_one("#__VIEWSTATEENCRYPTED")["value"]
+        payload["__VIEWSTATE"] = soup.select_one("#__VIEWSTATE")["value"]
+        payload["__VIEWSTATEGENERATOR"] = soup.select_one(
+            "#__VIEWSTATEGENERATOR")["value"]
+        payload["__EVENTVALIDATION"] = soup.select_one(
+            "#__EVENTVALIDATION")["value"]
+
+        res = requests.post(URL, data=payload)
+        soup = BeautifulSoup(res.text, self.html_parser)
+
+        if (self.no_data in res.text):
+            logging.warning(self.no_data + title)
+            return
+
+        first_nums = soup.select(".td_w.font_black14b_center > span")
+        data_count = len(first_nums) / self.COUNT_OF_38M6_LOTTERY_PRIZE_NUMBER / 2
+
+        for i in range(0, int(data_count)):
+            temp_second_nums = []
+            stage = soup.select(
+                '#M638Control_history1_dlQuery_lbM638_DrawTerm_' + str(i))
+            date = soup.select(
+                '#M638Control_history1_dlQuery_M638_DDate_' + str(i))
+
+            for j in range(self.COUNT_OF_38M6_LOTTERY_PRIZE_NUMBER):
+                temp_second_nums.append(first_nums[((i * 2) * self.COUNT_OF_38M6_LOTTERY_PRIZE_NUMBER) + j].text.strip())
+
+            data = {
+                "期別": stage[0].text,
+                "開獎日期": date[0].text,
                 "獎號": temp_second_nums,
             }
             datas.append(data)
