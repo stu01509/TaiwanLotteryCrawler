@@ -13,17 +13,22 @@ class TaiwanLotteryCrawler():
     COUNT_OF_3D_LOTTERY_PRIZE_NUMBER = 3
     COUNT_OF_4D_LOTTERY_PRIZE_NUMBER = 4
     COUNT_OF_38M6_LOTTERY_PRIZE_NUMBER = 6
+    COUNT_OF_49M6_LOTTERY_PRIZE_NUMBER = 6
 
     html_parser = 'html.parser'
     no_data = '查無資料'
+
+    def initial_default_payload(self, url, payload, keys):
+        res = requests.get(url)
+        soup = BeautifulSoup(res.text, self.html_parser)
+
+        for key in keys:
+            payload[key] = soup.select_one('#' + key)["value"]
 
     # 威力彩
     def super_lotto(self, back_time=[utils.get_current_republic_era(), utils.get_current_month()]):
         URL = 'https://www.taiwanlottery.com.tw/Lotto/SuperLotto638/history.aspx'
         title = '威力彩_' + str(back_time[0]) + '_' + str(back_time[1])
-
-        res = requests.get(URL)
-        soup = BeautifulSoup(res.text, self.html_parser)
 
         datas = []
         payload = {
@@ -32,11 +37,8 @@ class TaiwanLotteryCrawler():
             'SuperLotto638Control_history1$dropMonth': back_time[1],
             'SuperLotto638Control_history1$btnSubmit': '查詢'
         }
-        payload["__VIEWSTATE"] = soup.select_one("#__VIEWSTATE")["value"]
-        payload["__VIEWSTATEGENERATOR"] = soup.select_one(
-            "#__VIEWSTATEGENERATOR")["value"]
-        payload["__EVENTVALIDATION"] = soup.select_one(
-            "#__EVENTVALIDATION")["value"]
+
+        self.initial_default_payload(URL, payload, ['__VIEWSTATE', '__VIEWSTATEGENERATOR', '__EVENTVALIDATION'])
 
         res = requests.post(URL, data=payload)
         soup = BeautifulSoup(res.text, self.html_parser)
@@ -78,9 +80,6 @@ class TaiwanLotteryCrawler():
         URL = 'https://www.taiwanlottery.com.tw/Lotto/Lotto649/history.aspx'
         title = '大樂透_' + str(back_time[0]) + '_' + str(back_time[1])
 
-        res = requests.get(URL)
-        soup = BeautifulSoup(res.text, self.html_parser)
-
         datas = []
         payload = {
             'Lotto649Control_history$chk': 'radYM',
@@ -88,11 +87,8 @@ class TaiwanLotteryCrawler():
             'Lotto649Control_history$dropMonth': back_time[1],
             'Lotto649Control_history$btnSubmit': '查詢'
         }
-        payload["__VIEWSTATE"] = soup.select_one("#__VIEWSTATE")["value"]
-        payload["__VIEWSTATEGENERATOR"] = soup.select_one(
-            "#__VIEWSTATEGENERATOR")["value"]
-        payload["__EVENTVALIDATION"] = soup.select_one(
-            "#__EVENTVALIDATION")["value"]
+
+        self.initial_default_payload(URL, payload, ['__VIEWSTATE', '__VIEWSTATEGENERATOR', '__EVENTVALIDATION'])
 
         res = requests.post(URL, data=payload)
         soup = BeautifulSoup(res.text, self.html_parser)
@@ -135,21 +131,15 @@ class TaiwanLotteryCrawler():
         URL = 'https://www.taiwanlottery.com.tw/Lotto/Dailycash/history.aspx'
         title = '今彩539_' + str(back_time[0]) + '_' + str(back_time[1])
 
-        res = requests.get(URL)
-        soup = BeautifulSoup(res.text, self.html_parser)
         datas = []
-
         payload = {
             'D539Control_history1$chk': 'radYM',
             'D539Control_history1$dropYear': back_time[0],
             'D539Control_history1$dropMonth': back_time[1],
             'D539Control_history1$btnSubmit': '查詢'
         }
-        payload["__VIEWSTATE"] = soup.select_one("#__VIEWSTATE")["value"]
-        payload["__VIEWSTATEGENERATOR"] = soup.select_one(
-            "#__VIEWSTATEGENERATOR")["value"]
-        payload["__EVENTVALIDATION"] = soup.select_one(
-            "#__EVENTVALIDATION")["value"]
+
+        self.initial_default_payload(URL, payload, ['__VIEWSTATE', '__VIEWSTATEGENERATOR', '__EVENTVALIDATION'])
 
         res = requests.post(URL, data=payload)
         soup = BeautifulSoup(res.text, self.html_parser)
@@ -189,21 +179,15 @@ class TaiwanLotteryCrawler():
         URL = 'https://www.taiwanlottery.com.tw/Lotto/Lotto1224/history.aspx'
         title = '雙贏彩_' + str(back_time[0]) + '_' + str(back_time[1])
 
-        res = requests.get(URL)
-        soup = BeautifulSoup(res.text, self.html_parser)
         datas = []
-
         payload = {
             'Lotto1224Control_history$chk': 'radYM',
             'Lotto1224Control_history$dropYear': back_time[0],
             'Lotto1224Control_history$dropMonth': back_time[1],
             'Lotto1224Control_history$btnSubmit': '查詢'
         }
-        payload["__VIEWSTATE"] = soup.select_one("#__VIEWSTATE")["value"]
-        payload["__VIEWSTATEGENERATOR"] = soup.select_one(
-            "#__VIEWSTATEGENERATOR")["value"]
-        payload["__EVENTVALIDATION"] = soup.select_one(
-            "#__EVENTVALIDATION")["value"]
+
+        self.initial_default_payload(URL, payload, ['__VIEWSTATE', '__VIEWSTATEGENERATOR', '__EVENTVALIDATION'])
 
         res = requests.post(URL, data=payload)
         soup = BeautifulSoup(res.text, self.html_parser)
@@ -243,21 +227,15 @@ class TaiwanLotteryCrawler():
         URL = 'https://www.taiwanlottery.com.tw/Lotto/3D/history.aspx'
         title = '3星彩_' + str(back_time[0]) + '_' + str(back_time[1])
 
-        res = requests.get(URL)
-        soup = BeautifulSoup(res.text, self.html_parser)
         datas = []
-
         payload = {
             'L3DControl_history1$chk': 'radYM',
             'L3DControl_history1$dropYear': back_time[0],
             'L3DControl_history1$dropMonth': back_time[1],
             'L3DControl_history1$btnSubmit': '查詢'
         }
-        payload["__VIEWSTATE"] = soup.select_one("#__VIEWSTATE")["value"]
-        payload["__VIEWSTATEGENERATOR"] = soup.select_one(
-            "#__VIEWSTATEGENERATOR")["value"]
-        payload["__EVENTVALIDATION"] = soup.select_one(
-            "#__EVENTVALIDATION")["value"]
+
+        self.initial_default_payload(URL, payload, ['__VIEWSTATE', '__VIEWSTATEGENERATOR', '__EVENTVALIDATION'])
 
         res = requests.post(URL, data=payload)
         soup = BeautifulSoup(res.text, self.html_parser)
@@ -295,21 +273,15 @@ class TaiwanLotteryCrawler():
         URL = 'https://www.taiwanlottery.com.tw/Lotto/4D/history.aspx'
         title = '4星彩_' + str(back_time[0]) + '_' + str(back_time[1])
 
-        res = requests.get(URL)
-        soup = BeautifulSoup(res.text, self.html_parser)
         datas = []
-
         payload = {
             'L4DControl_history1$chk': 'radYM',
             'L4DControl_history1$dropYear': back_time[0],
             'L4DControl_history1$dropMonth': back_time[1],
             'L4DControl_history1$btnSubmit': '查詢'
         }
-        payload["__VIEWSTATE"] = soup.select_one("#__VIEWSTATE")["value"]
-        payload["__VIEWSTATEGENERATOR"] = soup.select_one(
-            "#__VIEWSTATEGENERATOR")["value"]
-        payload["__EVENTVALIDATION"] = soup.select_one(
-            "#__EVENTVALIDATION")["value"]
+
+        self.initial_default_payload(URL, payload, ['__VIEWSTATE', '__VIEWSTATEGENERATOR', '__EVENTVALIDATION'])
 
         res = requests.post(URL, data=payload)
         soup = BeautifulSoup(res.text, self.html_parser)
@@ -347,11 +319,7 @@ class TaiwanLotteryCrawler():
         URL = 'https://www.taiwanlottery.com.tw/Lotto/38m6/history.aspx'
         title = '38樂合彩_' + str(back_time[0]) + '_' + str(back_time[1])
 
-        res = requests.get(URL)
-        soup = BeautifulSoup(res.text, self.html_parser)
-
         datas = []
-
         payload = {
             'M638Control_history1$chk': 'radYM',
             'M638Control_history1$dropYear': back_time[0],
@@ -359,12 +327,7 @@ class TaiwanLotteryCrawler():
             'M638Control_history1$btnSubmit': '查詢',
         }
 
-        payload["__VIEWSTATEENCRYPTED"] = soup.select_one("#__VIEWSTATEENCRYPTED")["value"]
-        payload["__VIEWSTATE"] = soup.select_one("#__VIEWSTATE")["value"]
-        payload["__VIEWSTATEGENERATOR"] = soup.select_one(
-            "#__VIEWSTATEGENERATOR")["value"]
-        payload["__EVENTVALIDATION"] = soup.select_one(
-            "#__EVENTVALIDATION")["value"]
+        self.initial_default_payload(URL, payload, ['__VIEWSTATE', '__VIEWSTATEGENERATOR', '__EVENTVALIDATION', '__VIEWSTATEENCRYPTED'])
 
         res = requests.post(URL, data=payload)
         soup = BeautifulSoup(res.text, self.html_parser)
@@ -385,6 +348,54 @@ class TaiwanLotteryCrawler():
 
             for j in range(self.COUNT_OF_38M6_LOTTERY_PRIZE_NUMBER):
                 temp_second_nums.append(first_nums[((i * 2) * self.COUNT_OF_38M6_LOTTERY_PRIZE_NUMBER) + j].text.strip())
+
+            data = {
+                "期別": stage[0].text,
+                "開獎日期": date[0].text,
+                "獎號": temp_second_nums,
+            }
+            datas.append(data)
+
+        if len(datas) == 0:
+            logging.warning(self.no_data + title)
+            return
+
+        return datas
+
+    # 49樂合彩
+    def lotto49m6(self, back_time=[utils.get_current_republic_era(), utils.get_current_month()]):
+        URL = 'https://www.taiwanlottery.com.tw/Lotto/49m6/history.aspx'
+        title = '49樂合彩_' + str(back_time[0]) + '_' + str(back_time[1])
+
+        datas = []
+        payload = {
+            'M649Control_history1$chk': 'radYM',
+            'M649Control_history1$dropYear': back_time[0],
+            'M649Control_history1$dropMonth': back_time[1],
+            'M649Control_history1$btnSubmit': '查詢',
+        }
+
+        self.initial_default_payload(URL, payload, ['__VIEWSTATE', '__VIEWSTATEGENERATOR', '__EVENTVALIDATION', '__VIEWSTATEENCRYPTED'])
+
+        res = requests.post(URL, data=payload)
+        soup = BeautifulSoup(res.text, self.html_parser)
+
+        if (self.no_data in res.text):
+            logging.warning(self.no_data + title)
+            return
+
+        first_nums = soup.select(".td_w.font_black14b_center > span")
+        data_count = len(first_nums) / self.COUNT_OF_49M6_LOTTERY_PRIZE_NUMBER / 2
+
+        for i in range(0, int(data_count)):
+            temp_second_nums = []
+            stage = soup.select(
+                '#M649Control_history1_dlQuery_M649_DrawTerm_' + str(i))
+            date = soup.select(
+                '#M649Control_history1_dlQuery_M649_DDate_' + str(i))
+
+            for j in range(self.COUNT_OF_38M6_LOTTERY_PRIZE_NUMBER):
+                temp_second_nums.append(first_nums[((i * 2) * self.COUNT_OF_49M6_LOTTERY_PRIZE_NUMBER) + j].text.strip())
 
             data = {
                 "期別": stage[0].text,
