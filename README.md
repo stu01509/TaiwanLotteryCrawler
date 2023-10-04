@@ -12,7 +12,7 @@
 
 ## 介紹
 
-這個專案是用來爬取 [台灣彩券](https://www.taiwanlottery.com.tw/) 官網上歷史的開獎紀錄，目前支援**威力彩**、**大樂透**、**今彩539**、**雙贏彩**、**3星彩**、**4星彩**、**38樂合彩**、**49樂合彩** 8 種彩券遊戲。
+這個專案是用來爬取 [台灣彩券](https://www.taiwanlottery.com.tw/) 官網上歷史的開獎紀錄，目前支援**威力彩**、**大樂透**、**今彩539**、**雙贏彩**、**3星彩**、**4星彩**、**38樂合彩**、**39樂合彩**、**49樂合彩** 9 種彩券遊戲。
 
 ## 功能
 
@@ -92,16 +92,6 @@ result = lottery.lotto4d()
 print(result)
 ```
 
-[49樂合彩](https://codesandbox.io/p/sandbox/49le-he-cai-dang-yue-fen-de-kai-jiang-ji-lu-jgy94n)
-
-```python
-from TaiwanLottery import TaiwanLotteryCrawler
-
-lottery = TaiwanLotteryCrawler()
-result = lottery.lotto49m6()
-print(result)
-```
-
 [38樂合彩](https://codesandbox.io/p/sandbox/38le-he-cai-dang-yue-fen-de-kai-jiang-ji-lu-yfphxf)
 
 ```python
@@ -109,6 +99,26 @@ from TaiwanLottery import TaiwanLotteryCrawler
 
 lottery = TaiwanLotteryCrawler()
 result = lottery.lotto38m6()
+print(result)
+```
+
+[39樂合彩](https://codesandbox.io/p/sandbox/39le-he-cai-dang-yue-fen-de-kai-jiang-ji-lu-mgqwfg)
+
+```python
+from TaiwanLottery import TaiwanLotteryCrawler
+
+lottery = TaiwanLotteryCrawler()
+result = lottery.lotto39m5()
+print(result)
+```
+
+[49樂合彩](https://codesandbox.io/p/sandbox/49le-he-cai-dang-yue-fen-de-kai-jiang-ji-lu-jgy94n)
+
+```python
+from TaiwanLottery import TaiwanLotteryCrawler
+
+lottery = TaiwanLotteryCrawler()
+result = lottery.lotto49m6()
 print(result)
 ```
 
@@ -186,6 +196,16 @@ result = lottery.lotto38m6(['112', '8'])
 print(result)
 ```
 
+[39樂合彩](https://codesandbox.io/p/sandbox/39le-he-cai-zhi-ding-nian-yue-de-kai-jiang-ji-lu-lskqmm)
+
+```python
+from TaiwanLottery import TaiwanLotteryCrawler
+
+lottery = TaiwanLotteryCrawler()
+result = lottery.lotto39m5(['112', '8'])
+print(result)
+```
+
 [49樂合彩](https://codesandbox.io/p/sandbox/49le-he-cai-zhi-ding-nian-yue-de-kai-jiang-ji-lu-ff6d5d)
 
 ```python
@@ -205,6 +225,8 @@ print(result)
 - [3星彩](https://www.taiwanlottery.com.tw/Lotto/3D/history.aspx)
 - [4星彩](https://www.taiwanlottery.com.tw/Lotto/4D/history.aspx)
 - [38樂合彩](https://www.taiwanlottery.com.tw/Lotto/38m6/history.aspx)
+- [39樂合彩](https://www.taiwanlottery.com.tw/Lotto/39m5/history.aspx)
+- [49 樂合彩](https://www.taiwanlottery.com.tw/Lotto/49m6/history.aspx)
 
 ## License
 

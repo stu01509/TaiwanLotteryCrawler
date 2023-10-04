@@ -14,6 +14,7 @@ class TaiwanLotteryCrawler():
     COUNT_OF_4D_LOTTERY_PRIZE_NUMBER = 4
     COUNT_OF_38M6_LOTTERY_PRIZE_NUMBER = 6
     COUNT_OF_49M6_LOTTERY_PRIZE_NUMBER = 6
+    COUNT_OF_39M5_LOTTERY_PRIZE_NUMBER = 5
 
     html_parser = 'html.parser'
     no_data = '查無資料'
@@ -400,6 +401,53 @@ class TaiwanLotteryCrawler():
             data = {
                 "期別": stage[0].text,
                 "開獎日期": date[0].text,
+                "獎號": temp_second_nums,
+            }
+            datas.append(data)
+
+        if len(datas) == 0:
+            logging.warning(self.no_data + title)
+            return
+
+        return datas
+
+    # 39樂合彩
+    def lotto39m5(self, back_time=[utils.get_current_republic_era(), utils.get_current_month()]):
+        URL = 'https://www.taiwanlottery.com.tw/Lotto/39m5/history.aspx'
+        title = '39樂合彩_' + str(back_time[0]) + '_' + str(back_time[1])
+
+        datas = []
+        payload = {
+            'M539Control_history1$chk': 'radYM',
+            'M539Control_history1$dropYear': back_time[0],
+            'M539Control_history1$dropMonth': back_time[1],
+            'M539Control_history1$btnSubmit': '查詢',
+        }
+
+        self.initial_default_payload(URL, payload, ['__VIEWSTATE', '__VIEWSTATEGENERATOR', '__EVENTVALIDATION', '__VIEWSTATEENCRYPTED'])
+
+        res = requests.post(URL, data=payload)
+        soup = BeautifulSoup(res.text, self.html_parser)
+
+        if (self.no_data in res.text):
+            logging.warning(self.no_data + title)
+            return
+
+        first_nums = soup.select(".td_w.font_black14b_center > span")
+        data_count = len(first_nums) / self.COUNT_OF_39M5_LOTTERY_PRIZE_NUMBER / 2
+
+        stage = soup.select('table[class*="table_"] tr:nth-child(2) > td:nth-child(1) > span')
+        date = soup.select('table[class*="table_"] tr:nth-child(2) > td:nth-child(2) > span > span')
+
+        for i in range(0, int(data_count)):
+            temp_second_nums = []
+
+            for j in range(self.COUNT_OF_39M5_LOTTERY_PRIZE_NUMBER):
+                temp_second_nums.append(first_nums[((i * 2) * self.COUNT_OF_39M5_LOTTERY_PRIZE_NUMBER) + j].text.strip())
+
+            data = {
+                "期別": stage[i].text,
+                "開獎日期": date[i].text,
                 "獎號": temp_second_nums,
             }
             datas.append(data)
