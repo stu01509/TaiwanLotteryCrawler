@@ -10,6 +10,10 @@ from TaiwanLottery import utils
 
 
 class TaiwanLotteryCrawler():
+    COUNT_OF_SUPER_LOTTERY_PRIZE_NUMBER = 6
+    COUNT_OF_649_LOTTERY_PRIZE_NUMBER = 6
+    COUNT_OF_DAILY_CASH_LOTTERY_PRIZE_NUMBER = 5
+    COUNT_OF_1224_LOTTERY_PRIZE_NUMBER = 12
     COUNT_OF_3D_LOTTERY_PRIZE_NUMBER = 3
     COUNT_OF_4D_LOTTERY_PRIZE_NUMBER = 4
     COUNT_OF_38M6_LOTTERY_PRIZE_NUMBER = 6
@@ -59,8 +63,8 @@ class TaiwanLotteryCrawler():
             date = soup.select(
                 '#SuperLotto638Control_history1_dlQuery_Date_' + str(i))
 
-            for j in range(6):
-                temp_second_nums.append(first_nums[((i * 2) * 6) + j].text.strip())
+            for j in range(self.COUNT_OF_SUPER_LOTTERY_PRIZE_NUMBER):
+                temp_second_nums.append(first_nums[((i * 2) * self.COUNT_OF_SUPER_LOTTERY_PRIZE_NUMBER) + j].text.strip())
 
             data = {
                 "期別": stage[0].text,
@@ -109,8 +113,8 @@ class TaiwanLotteryCrawler():
             date = soup.select(
                 '#Lotto649Control_history_dlQuery_L649_DDate_' + str(i))
 
-            for j in range(6):
-                temp_second_nums.append(first_nums[((i * 2) * 6) + j].text.strip())
+            for j in range(self.COUNT_OF_649_LOTTERY_PRIZE_NUMBER):
+                temp_second_nums.append(first_nums[((i * 2) * self.COUNT_OF_649_LOTTERY_PRIZE_NUMBER) + j].text.strip())
 
             data = {
                 "期別": stage[0].text,
@@ -150,7 +154,7 @@ class TaiwanLotteryCrawler():
             return
 
         first_nums = soup.select(".td_w.font_black14b_center")
-        data_count = len(first_nums) / 5 / 2
+        data_count = len(first_nums) / self.COUNT_OF_DAILY_CASH_LOTTERY_PRIZE_NUMBER / 2
 
         for i in range(0, int(data_count)):
             temp_second_nums = []
@@ -159,8 +163,8 @@ class TaiwanLotteryCrawler():
             date = soup.select(
                 '#D539Control_history1_dlQuery_D539_DDate_' + str(i))
 
-            for j in range(5):
-                temp_second_nums.append(first_nums[((i * 2) * 5) + j].text.strip())
+            for j in range(self.COUNT_OF_DAILY_CASH_LOTTERY_PRIZE_NUMBER):
+                temp_second_nums.append(first_nums[((i * 2) * self.COUNT_OF_DAILY_CASH_LOTTERY_PRIZE_NUMBER) + j].text.strip())
 
             data = {
                 "期別": stage[0].text,
@@ -198,7 +202,7 @@ class TaiwanLotteryCrawler():
             return
 
         first_nums = soup.select(".td_w.font_black14b_center")
-        data_count = len(first_nums) / 2 / 12
+        data_count = len(first_nums) / 2 / self.COUNT_OF_1224_LOTTERY_PRIZE_NUMBER
 
         for i in range(0, int(data_count)):
             temp_second_nums = []
@@ -207,8 +211,8 @@ class TaiwanLotteryCrawler():
             date = soup.select(
                 '#Lotto1224Control_history_dlQuery_Lotto1224_DDate_' + str(i))
 
-            for j in range(12):
-                temp_second_nums.append(first_nums[((i * 2) * 12) + j].text.strip())
+            for j in range(self.COUNT_OF_1224_LOTTERY_PRIZE_NUMBER):
+                temp_second_nums.append(first_nums[((i * 2) * self.COUNT_OF_1224_LOTTERY_PRIZE_NUMBER) + j].text.strip())
 
             data = {
                 "期別": stage[0].text,
