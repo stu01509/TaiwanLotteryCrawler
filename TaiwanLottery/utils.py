@@ -9,13 +9,12 @@ from terminaltables import AsciiTable
 
 # 取得目前月份
 def get_current_month():
-    return datetime.datetime.now().month
+    return datetime.datetime.now().strftime('%m')
 
 
-# 取得目前民國年分
-def get_current_republic_era():
-    current_time = datetime.datetime.now()
-    return current_time.year - 1911
+# 取得目前年
+def get_current_year():
+    return datetime.datetime.now().strftime('%Y')
 
 
 # 西元年月份轉民國年月份
