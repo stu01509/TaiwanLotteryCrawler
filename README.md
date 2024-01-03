@@ -124,7 +124,7 @@ print(result)
 
 ---
 
-### 爬取指定年月的開獎紀錄(民國年份)
+### 爬取指定年月的開獎紀錄(YYYY-MM)
 
 [威力彩](https://codesandbox.io/p/sandbox/da-le-tou-dang-yue-fen-de-kai-jiang-ji-lu-forked-ksq74y)
 
@@ -132,7 +132,7 @@ print(result)
 from TaiwanLottery import TaiwanLotteryCrawler
 
 lottery = TaiwanLotteryCrawler()
-result = lottery.super_lotto(['112', '6'])
+result = lottery.super_lotto(['2023', '06'])
 print(result)
 ```
 
@@ -142,7 +142,7 @@ print(result)
 from TaiwanLottery import TaiwanLotteryCrawler
 
 lottery = TaiwanLotteryCrawler()
-result = lottery.lotto649(['112', '6'])
+result = lottery.lotto649(['2023', '06'])
 print(result)
 ```
 
@@ -152,7 +152,7 @@ print(result)
 from TaiwanLottery import TaiwanLotteryCrawler
 
 lottery = TaiwanLotteryCrawler()
-result = lottery.daily_cash(['112', '6'])
+result = lottery.daily_cash(['2023', '06'])
 print(result)
 ```
 
@@ -162,7 +162,7 @@ print(result)
 from TaiwanLottery import TaiwanLotteryCrawler
 
 lottery = TaiwanLotteryCrawler()
-result = lottery.lotto1224(['112', '6'])
+result = lottery.lotto1224(['2023', '06'])
 print(result)
 ```
 
@@ -172,7 +172,7 @@ print(result)
 from TaiwanLottery import TaiwanLotteryCrawler
 
 lottery = TaiwanLotteryCrawler()
-result = lottery.lotto3d(['112', '8'])
+result = lottery.lotto3d(['2023', '08'])
 print(result)
 ```
 
@@ -182,7 +182,7 @@ print(result)
 from TaiwanLottery import TaiwanLotteryCrawler
 
 lottery = TaiwanLotteryCrawler()
-result = lottery.lotto4d(['112', '8'])
+result = lottery.lotto4d(['2023', '08'])
 print(result)
 ```
 
@@ -192,7 +192,7 @@ print(result)
 from TaiwanLottery import TaiwanLotteryCrawler
 
 lottery = TaiwanLotteryCrawler()
-result = lottery.lotto38m6(['112', '8'])
+result = lottery.lotto38m6(['2023', '08'])
 print(result)
 ```
 
@@ -202,7 +202,7 @@ print(result)
 from TaiwanLottery import TaiwanLotteryCrawler
 
 lottery = TaiwanLotteryCrawler()
-result = lottery.lotto39m5(['112', '8'])
+result = lottery.lotto39m5(['2023', '08'])
 print(result)
 ```
 
@@ -212,21 +212,13 @@ print(result)
 from TaiwanLottery import TaiwanLotteryCrawler
 
 lottery = TaiwanLotteryCrawler()
-result = lottery.lotto49m6(['112', '8'])
+result = lottery.lotto49m6(['2023', '08'])
 print(result)
 ```
 
 ## 資料來源
 
-- [威力彩](https://www.taiwanlottery.com.tw/Lotto/SuperLotto638/history.aspx)
-- [大樂透](https://www.taiwanlottery.com.tw/Lotto/Lotto649/history.aspx)
-- [今彩539](https://www.taiwanlottery.com.tw/Lotto/Dailycash/history.aspx)
-- [雙贏彩](https://www.taiwanlottery.com.tw/Lotto/Lotto1224/history.aspx)
-- [3星彩](https://www.taiwanlottery.com.tw/Lotto/3D/history.aspx)
-- [4星彩](https://www.taiwanlottery.com.tw/Lotto/4D/history.aspx)
-- [38樂合彩](https://www.taiwanlottery.com.tw/Lotto/38m6/history.aspx)
-- [39樂合彩](https://www.taiwanlottery.com.tw/Lotto/39m5/history.aspx)
-- [49 樂合彩](https://www.taiwanlottery.com.tw/Lotto/49m6/history.aspx)
+- [https://www.taiwanlottery.com/lotto/history/history_result/](https://www.taiwanlottery.com/lotto/history/history_result/)
 
 ## License
 
