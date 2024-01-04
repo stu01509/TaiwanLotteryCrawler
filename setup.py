@@ -17,7 +17,6 @@ setup(
     packages=find_packages(),
     install_requires=[
         "requests>=2",
-        "beautifulsoup4>=4",
         "terminaltables>=3",
         "pytest>=7.0",
         "pytest-cov>=4.0",
