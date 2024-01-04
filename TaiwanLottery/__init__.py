@@ -7,8 +7,9 @@ from TaiwanLottery import utils
 
 
 class TaiwanLotteryCrawler():
-    no_data = '查無資料'
+    NO_DATA = '查無資料'
     BASE_URL = 'https://api.taiwanlottery.com/TLCAPIWeB/Lottery'
+    COUNT_OF_GROUP_1 = 6
 
     def get_lottery_result(self, url):
         response = requests.get(url)
@@ -28,12 +29,12 @@ class TaiwanLotteryCrawler():
             datas.append({
                 "期別": super_lotto638_result[i]['period'],
                 "開獎日期": super_lotto638_result[i]['lotteryDate'],
-                "第一區": super_lotto638_result[i]['drawNumberSize'][0:5],
-                "第二區": super_lotto638_result[i]['drawNumberSize'][6]
+                "第一區": super_lotto638_result[i]['drawNumberSize'][0:self.COUNT_OF_GROUP_1],
+                "第二區": super_lotto638_result[i]['drawNumberSize'][self.COUNT_OF_GROUP_1]
             })
 
         if len(datas) == 0:
-            logging.warning(self.no_data + title)
+            logging.warning(self.NO_DATA + title)
 
         return datas
 
@@ -51,12 +52,12 @@ class TaiwanLotteryCrawler():
             datas.append({
                 "期別": lotto649_result[i]['period'],
                 "開獎日期": lotto649_result[i]['lotteryDate'],
-                "獎號": lotto649_result[i]['drawNumberSize'][0:5],
-                "特別號": lotto649_result[i]['drawNumberSize'][6]
+                "獎號": lotto649_result[i]['drawNumberSize'][0:self.COUNT_OF_GROUP_1],
+                "特別號": lotto649_result[i]['drawNumberSize'][self.COUNT_OF_GROUP_1]
             })
 
         if len(datas) == 0:
-            logging.warning(self.no_data + title)
+            logging.warning(self.NO_DATA + title)
 
         return datas
 
@@ -78,7 +79,7 @@ class TaiwanLotteryCrawler():
             })
 
         if len(datas) == 0:
-            logging.warning(self.no_data + title)
+            logging.warning(self.NO_DATA + title)
 
         return datas
 
@@ -100,7 +101,7 @@ class TaiwanLotteryCrawler():
             })
 
         if len(datas) == 0:
-            logging.warning(self.no_data + title)
+            logging.warning(self.NO_DATA + title)
 
         return datas
 
@@ -122,7 +123,7 @@ class TaiwanLotteryCrawler():
             })
 
         if len(datas) == 0:
-            logging.warning(self.no_data + title)
+            logging.warning(self.NO_DATA + title)
 
         return datas
 
@@ -144,7 +145,7 @@ class TaiwanLotteryCrawler():
             })
 
         if len(datas) == 0:
-            logging.warning(self.no_data + title)
+            logging.warning(self.NO_DATA + title)
 
         return datas
 
@@ -166,7 +167,7 @@ class TaiwanLotteryCrawler():
             })
 
         if len(datas) == 0:
-            logging.warning(self.no_data + title)
+            logging.warning(self.NO_DATA + title)
 
         return datas
 
@@ -188,7 +189,7 @@ class TaiwanLotteryCrawler():
             })
 
         if len(datas) == 0:
-            logging.warning(self.no_data + title)
+            logging.warning(self.NO_DATA + title)
 
         return datas
 
@@ -210,6 +211,6 @@ class TaiwanLotteryCrawler():
             })
 
         if len(datas) == 0:
-            logging.warning(self.no_data + title)
+            logging.warning(self.NO_DATA + title)
 
         return datas
