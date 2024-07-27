@@ -2,7 +2,7 @@
 
 [![PyPI](https://img.shields.io/pypi/v/taiwanlottery)](https://pypi.org/project/taiwanlottery/)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/taiwanlottery)](https://pypi.org/project/taiwanlottery/)
-[![CI Status](https://github.com/stu01509/TaiwanLotteryCrawler/actions/workflows/ci.yaml/badge.svg)](https://github.com/stu01509/TaiwanLotteryCrawler/actions/workflows/ci.yaml)
+[![CI Status](https://github.com/stu01509/TaiwanLotteryCrawler/actions/workflows/ci.yaml/badge.svg)](https://github.com/stu01509/TaiwanLotteryCrawler/actions/workflows/merge.yaml)
 [![codecov](https://codecov.io/gh/stu01509/TaiwanLotteryCrawler/branch/master/graph/badge.svg?token=AX0LW032B4)](https://codecov.io/gh/stu01509/TaiwanLotteryCrawler)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=stu01509_TaiwanLotteryCrawler&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=stu01509_TaiwanLotteryCrawler)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=stu01509_TaiwanLotteryCrawler&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=stu01509_TaiwanLotteryCrawler)
