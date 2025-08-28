@@ -27,7 +27,7 @@ jobs:
       - name: Flake8 Lint Check
         run: flake8
       - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
+        uses: SonarSource/sonarqube-scan-action
         env:
           GITHUB_TOKEN: ${{ secrets.SONAR_CLOUD_GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
