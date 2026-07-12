@@ -7,8 +7,11 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        python-version: ['3.10']
+        # 3.13 excluded: its stricter OpenSSL rejects the lottery API's
+        # certificate (missing Subject Key Identifier). Re-add once fixed upstream.
+        python-version: ['3.10', '3.11', '3.12']
 
     steps:
       - name: Checkout
@@ -25,11 +28,13 @@ jobs:
       - name: Flake8 Lint Check
         run: flake8
       - name: SonarCloud Scan
+        if: matrix.python-version == '3.12'
         uses: SonarSource/sonarqube-scan-action@v8
         env:
           GITHUB_TOKEN: ${{ secrets.SONAR_CLOUD_GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       - name: Upload coverage reports to Codecov
+        if: matrix.python-version == '3.12'
         uses: codecov/codecov-action@v7
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
